@@ -1,0 +1,106 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Features CSS
+*/
+
+/*================================================
+Default CSS
+=================================================*/
+$font-family: 'Poppins', sans-serif;
+$light-green-color: #44ce6f;
+$white-color: #ffffff;
+$black-color: #0e314c;
+$navlink-color: #4a6f8a;
+$paragraph-color: #6084a4;
+$purple-color: #c679e3;
+$bg-color: #f7fafd;
+$bg-color2: #f9f6f6;
+$hosting-main-color: #032b8d;
+$gradient-color: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+$gradient-color2: linear-gradient(to right bottom, #1fa2ff, #00c0ff, #00d9f2, #53eedd, #a6ffcb);
+$transition: .5s;
+$font-size: 14px;
+
+/*================================================
+Features CSS
+=================================================*/
+.features-area {
+    padding-bottom: 50px;
+}
+.features-area-two {
+    overflow: hidden;
+}
+.single-features {
+    position: relative;
+    background: $white-color;
+    padding: {
+        left: 95px;
+        top: 30px;
+        right: 20px;
+        bottom: 30px;
+    }
+    margin-bottom: 30px;
+    border-radius: 5px;
+    transition: $transition;
+
+    h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    .icon {
+        position: absolute;
+        text-align: center;
+        width: 55px;
+        height: 55px;
+        line-height: 55px;
+        background: #cdf1d8;
+        border-radius: 50%;
+        color: $light-green-color;
+        left: 20px;
+        top: 30px;
+        transition: $transition;
+
+        i {
+            font-size: 30px;
+            position: relative;
+            top: 9px;
+        }
+
+        &.bg-c679e3 {
+            color: $purple-color;
+            background: #edc3fc;
+        }
+        &.bg-eb6b3d {
+            color: #eb6b3d;
+            background: rgba(235, 107, 61, .3);
+        }
+    }
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+
+        .icon {
+            background: $light-green-color;
+            color: $white-color;
+
+            &.bg-c679e3 {
+                background: $purple-color;
+            }
+            &.bg-eb6b3d {
+                background: #eb6b3d;
+            }
+        }
+    }
+}

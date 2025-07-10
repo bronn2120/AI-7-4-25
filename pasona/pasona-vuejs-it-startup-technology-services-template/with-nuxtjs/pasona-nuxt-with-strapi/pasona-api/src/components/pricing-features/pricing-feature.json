@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_pricing_features_pricing_features",
+  "info": {
+    "displayName": "pricing-feature",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "className": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

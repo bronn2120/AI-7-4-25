@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_pricing_items_pricing_items",
+  "info": {
+    "displayName": "pricing-item",
+    "icon": "arrowRight",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "string",
+      "required": true
+    },
+    "period": {
+      "type": "string",
+      "required": true,
+      "default": "Mon"
+    },
+    "pricingFeature": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pricing-features.pricing-feature",
+      "required": true
+    },
+    "btnText": {
+      "type": "string",
+      "required": true,
+      "default": "Select Plan"
+    },
+    "btnLink": {
+      "type": "string",
+      "required": true,
+      "default": "/contact"
+    }
+  }
+}

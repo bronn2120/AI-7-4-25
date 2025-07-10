@@ -1,0 +1,272 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Shop CSS
+*/
+
+/*================================================
+Default CSS
+=================================================*/
+$font-family: 'Poppins', sans-serif;
+$light-green-color: #44ce6f;
+$white-color: #ffffff;
+$black-color: #0e314c;
+$navlink-color: #4a6f8a;
+$paragraph-color: #6084a4;
+$purple-color: #c679e3;
+$bg-color: #f7fafd;
+$bg-color2: #f9f6f6;
+$hosting-main-color: #032b8d;
+$gradient-color: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+$gradient-color2: linear-gradient(to right bottom, #1fa2ff, #00c0ff, #00d9f2, #53eedd, #a6ffcb);
+$transition: .5s;
+$font-size: 14px;
+
+
+/*================================================
+Shop CSS
+=================================================*/
+.woocommerce-topbar {
+    background-color: #fcfbfb;
+    padding: 10px 40px;
+    margin-bottom: 30px;
+
+    .woocommerce-topbar-ordering {
+        .form-select {
+            cursor: pointer;
+            border-color: #ebebeb;
+            font-size: 14px;
+            border-radius: 4px;
+            box-shadow: none;
+        }
+    }
+}
+.single-products {
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+
+    .products-content {
+        margin-top: 20px;
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        ul {
+            padding: 0;
+            margin: 10px 0 12px;
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+                color: #eac11d;
+
+                i {
+                    &::before {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        .add-to-cart-btn {
+            display: block;
+            width: 100%;
+            color: $black-color;
+            border: 1px solid $black-color;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+    .sale-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #ff2d2d;
+        color: #fff;
+        width: 55px;
+        height: 55px;
+        line-height: 55px;
+        border-radius: 50%;
+        z-index: 2;
+    }
+    .products-image {
+        overflow: hidden;
+        position: relative;
+        a {
+            width: 100%;
+            img {
+                transition: all 1.5s ease-out;
+                width: 100%;
+            }
+        }
+    }
+    &:hover, &:focus {
+        .products-content {
+            .add-to-cart-btn {
+                background-color: $black-color;
+                color: $white-color;
+            }
+        }
+        .products-image {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+#productsModalCenter {    
+    .modal-dialog {
+        max-width: 900px;
+    }
+    .modal-content {
+        border: none;
+        border-radius: 0;
+    
+        button.close {
+            position: absolute;
+            right: 2%;
+            display: inline-block;
+            opacity: 1;
+            top: 2%;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            line-height: 32px;
+            border: 1px solid #eeeeee;
+            border-radius: 50%;
+            outline: 0;
+            transition: $transition;
+    
+            span {
+                transition: $transition;
+            }
+            &:hover, &:focus {
+                background-color: $light-green-color;
+                color: $white-color;
+    
+                span {
+                    color: $white-color;
+                }
+            }
+        }
+        .products-image {
+            overflow: hidden;
+            
+            img {
+                width: 100%;
+            }
+        }
+        .products-content {
+            p {
+                margin-bottom: 20px;
+            }
+            h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+            .price {
+                margin-bottom: 15px;
+    
+                span {
+                    text-decoration: line-through;
+                    color: $paragraph-color;
+                }
+            }
+            form {
+                .quantity {
+                    display: inline-block;
+                    margin-right: 8px;
+
+                    .input-counter {
+                        max-width: 110px;
+                        min-width: 110px;
+                        text-align: center;
+                        display: inline-block;
+                        position: relative;    
+            
+                        span {
+                            position: absolute;
+                            top: 0;
+                            background-color: transparent;
+                            cursor: pointer;
+                            color: $paragraph-color;
+                            width: 40px;
+                            height: 100%;
+                            line-height: 47px;
+                            transition: $transition;
+                            padding: 0;
+            
+                            &.minus-btn {
+                                left: 0;
+                            }
+                            &.plus-btn {
+                                right: 0;
+                            }
+                            svg {
+                                width: 20px;
+                            }
+                            &:hover {
+                                color: $light-green-color;
+                            }
+                        }
+                        input {
+                            height: 47px;
+                            color: $black-color;
+                            outline: 0;
+                            display: block;
+                            border: none;
+                            background-color: #f8f8f8;
+                            text-align: center;
+                            width: 100%;
+                            font: {
+                                size: 17px;
+                                weight: 500;
+                            }
+                            &::placeholder {
+                                color: $black-color;
+                            }
+                        }
+                    }
+                }
+                button {
+                    background: $light-green-color;
+                    color: $white-color;
+                    border: none;
+                    height: 46px;
+                    padding: 0 20px;
+                    position: relative;
+                    top: -2px;
+                    cursor: pointer;
+                    outline: 0;
+                    transition: $transition;
+    
+                    &:hover, &:focus {
+                        background-color: $purple-color;
+                        color: $white-color;
+                    }
+                }
+            }
+            .product-meta {
+                margin-top: 15px;
+    
+                span {
+                    display: inline-block;
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}

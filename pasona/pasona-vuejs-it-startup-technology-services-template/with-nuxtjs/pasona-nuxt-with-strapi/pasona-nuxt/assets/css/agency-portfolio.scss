@@ -1,0 +1,362 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Agency Portfolio Banner CSS
+** - Our Latest Projects CSS
+** - Agency Portfolio About CSS
+** - Agency Portfolio Partner CSS
+** - Creative Area CSS
+*/
+
+/*================================================
+Default CSS
+=================================================*/
+$font-family: 'Poppins', sans-serif;
+$light-green-color: #44ce6f;
+$white-color: #ffffff;
+$black-color: #0e314c;
+$navlink-color: #4a6f8a;
+$paragraph-color: #6084a4;
+$purple-color: #c679e3;
+$bg-color: #f7fafd;
+$bg-color2: #f9f6f6;
+$hosting-main-color: #032b8d;
+$gradient-color: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+$gradient-color2: linear-gradient(to right bottom, #1fa2ff, #00c0ff, #00d9f2, #53eedd, #a6ffcb);
+$transition: .5s;
+$font-size: 14px;
+
+
+/*================================================
+Agency Portfolio Main Banner CSS
+=================================================*/
+.agency-portfolio-main-banner {
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+    background: {
+        position: center center;
+        size: cover;
+        repeat: no-repeat;
+    };
+    &.portfolio-banner-bg1 {
+        background-image: url(../img/agency-portfolio-main-banner/img1.jpg);
+    }
+    &.portfolio-banner-bg2 {
+        background-image: url(../img/agency-portfolio-main-banner/img2.jpg);
+    }
+    &.portfolio-banner-bg3 {
+        background-image: url(../img/agency-portfolio-main-banner/img3.jpg);
+    }
+}
+.portfolio-banner-content {
+    text-align: center;
+    max-width: 700px;
+    margin: {
+        left: auto;
+        right: auto;
+        top: -50px;
+    };
+    .sub-title {
+        display: block;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        color: $paragraph-color;
+        margin-bottom: 10px;
+    }
+    h1 {
+        margin-bottom: 15px;
+        line-height: 1.3;
+        font: {
+            size: 40px;
+            weight: 500;
+        };
+    }
+    p {
+        font-size: 15px;
+        max-width: 490px;
+        margin: {
+            left: auto;
+            right: auto;
+        };
+    }
+    .btn {
+        margin-top: 5px;
+    }
+}
+.agency-portfolio-home-slides {
+    .carousel {
+        .carousel__prev, .carousel__next {
+            margin: 0;
+            padding: 0 !important;
+            background-color: #e1e1e1;
+            color: $black-color;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 55px;
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            border-radius: 0;
+            transform: translateY(-50%);
+            transition: $transition;
+            font-size: 30px;
+            opacity: 0;
+            visibility: hidden;
+
+            &:hover {
+                background-color: $light-green-color;
+                color: $white-color;
+            }
+            &.carousel__next {
+                left: auto;
+                right: 40px;
+            }
+        }
+        &:hover {
+            .carousel__prev, .carousel__next {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+    .agency-portfolio-main-banner {
+        width: 100%;
+    }
+}
+
+/*================================================
+Our Latest Projects CSS
+=================================================*/
+.our-latest-projects {
+    padding-bottom: 50px;
+    position: relative;
+    z-index: 1;
+    .section-title  {
+        p {
+            margin-left: 0;
+        }
+    }
+}
+.projects-items {
+    margin: {
+        left: -15px;
+        right: -15px;
+    };
+    .single-latest-projects {
+        margin-bottom: 30px;
+        position: relative;
+
+        .link-btn {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 2;
+        }
+        .content {
+            position: absolute;
+            left: -5%;
+            top: 60%;
+            transform: translateY(-60%);
+            z-index: 1;
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+            background-color: $white-color;
+            box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+            padding: 25px;
+            margin-top: 20px;
+
+            span {
+                display: block;
+                text-transform: uppercase;
+                font-weight: 500;
+                margin-bottom: 8px;
+            }
+            h3 {
+                margin-bottom: 0;
+                font: {
+                    weight: 600;
+                    size: 20px;
+                };
+            }
+        }
+        &:hover {
+            .content {
+                opacity: 1;
+                visibility: visible;
+                margin-top: 0;
+            }
+        }
+    }
+}
+.shorting-menu {
+    text-align: right;
+
+    button {
+        background-color: transparent;
+        cursor: pointer;
+        color: #848484;
+        transition: $transition;
+        margin-right: 15px;
+        padding: 0;
+        outline: 0;
+        border: none;
+        font: {
+            size: $font-size;
+            weight: 600;
+        };
+        &:hover, &.active {
+            color: $black-color;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+/*================================================
+Agency Portfolio About CSS
+=================================================*/
+.agency-portfolio-about-area {
+    background-color: #f4f4f4;
+}
+.single-text-box {
+    h3 {
+        margin: {
+            bottom: 12px;
+            top: 25px;
+        };
+        font: {
+            weight: 600;
+            size: 22px;
+        };
+    }
+    .learn-more-btn {
+        color: #365267;
+        font: {
+            size: $font-size;
+            weight: 600;
+        };
+        i {
+            position: relative;
+            top: 4px;
+        }
+        svg {
+            width: 18px;
+            position: relative;
+            top: -1px;
+            margin-right: 3px;
+        }
+        &:hover {
+            color: $light-green-color;
+        }
+    }
+}
+
+/*================================================
+Agency Portfolio Partner CSS
+=================================================*/
+.agency-portfolio-partner-area {
+    background-color: $black-color;
+}
+.single-agency-portfolio-partner {
+    text-align: center;
+
+    a {
+        display: block;
+
+        img {
+            width: auto !important;
+            display: inline-block !important;
+        }
+    }
+}
+
+/*================================================
+Creative Area CSS
+=================================================*/
+.creative-area {
+    height: 650px;
+    background: {
+        image: url(../img/creative-bg.jpg);
+        position: center center;
+        repeat: no-repeat;
+        attachment: fixed;
+        size: cover;
+    };
+    .container {
+        position: relative;
+    }
+    .d-table-cell {
+        vertical-align: bottom;
+    }
+}
+.creative-inner-area {
+    max-width: 600px;
+    margin-left: auto;
+
+    .single-counter {
+        background-color: $black-color;
+        padding: 60px;
+
+        h3 {
+            color: $white-color;
+            margin-bottom: 5px;
+            font: {
+                size: 32px;
+                weight: 700;
+            };
+            .odometer-formatting-mark {
+                display: none;
+            }
+        }
+        p {
+            margin-bottom: 0;
+            line-height: initial;
+            color: $white-color;
+            font: {
+                size: 15px;
+                weight: 600;
+            };
+        }
+    }
+    .row {
+        margin: {
+            left: 0;
+            right: 0;
+        };
+    }
+    .col-lg-6 {
+        padding: {
+            left: 0;
+            right: 0;
+        };
+        &:nth-child(1) {
+            .single-counter {
+                background-color: $light-green-color;
+            }
+        }
+        &:nth-child(2) {
+            .single-counter {
+                background-color: $black-color;
+            }
+        }
+    }
+}

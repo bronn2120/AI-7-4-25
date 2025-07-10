@@ -1,0 +1,7 @@
+.env
+*.pyc
+__pycache__/
+credentials.json
+*.json
+*.swp
+ixome-googlejson/agents/deploy_to_heroku.sh

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_box_items_box_items",
+  "info": {
+    "displayName": "box-item",
+    "icon": "arrowRight",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "shortDesc": {
+      "type": "string",
+      "required": true,
+      "default": "Lorem ipsum dolor sit amet elit, adipiscing, sed do eiusmod tempor incididunt ut labore dolore magna."
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "bgClass": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

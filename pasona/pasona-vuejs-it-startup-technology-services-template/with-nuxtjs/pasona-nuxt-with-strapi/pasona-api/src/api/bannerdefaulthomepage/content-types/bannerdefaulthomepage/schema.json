@@ -1,0 +1,44 @@
+{
+  "kind": "singleType",
+  "collectionName": "bannerdefaulthomepages",
+  "info": {
+    "singularName": "bannerdefaulthomepage",
+    "pluralName": "bannerdefaulthomepages",
+    "displayName": "BannerDefaultHomePage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true,
+      "default": "Secure IT Solutions for a more secure environment"
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida."
+    },
+    "btnText": {
+      "type": "string",
+      "required": true,
+      "default": "Get Started"
+    },
+    "btnLink": {
+      "type": "string",
+      "required": true,
+      "default": "/contact"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

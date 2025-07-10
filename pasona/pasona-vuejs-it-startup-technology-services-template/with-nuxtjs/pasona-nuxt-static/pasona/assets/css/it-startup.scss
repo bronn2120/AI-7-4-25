@@ -1,0 +1,144 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Main Banner CSS
+** - Boxes CSS
+** - Features CSS
+*/
+
+/*================================================
+Default CSS
+=================================================*/
+$font-family: 'Poppins', sans-serif;
+$light-green-color: #44ce6f;
+$white-color: #ffffff;
+$black-color: #0e314c;
+$navlink-color: #4a6f8a;
+$paragraph-color: #6084a4;
+$purple-color: #c679e3;
+$bg-color: #f7fafd;
+$bg-color2: #f9f6f6;
+$hosting-main-color: #032b8d;
+$gradient-color: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+$gradient-color2: linear-gradient(to right bottom, #1fa2ff, #00c0ff, #00d9f2, #53eedd, #a6ffcb);
+$transition: .5s;
+$font-size: 14px;
+
+/*================================================
+Main Banner CSS
+=================================================*/
+.main-banner {
+    position: relative;
+    height: 910px;
+    z-index: 1;
+    background: transparent url(../img/banner-bg1.jpg) right top no-repeat;
+
+    .hero-content {
+        h1 {
+            font: {
+                size: 45px;
+                weight: 500;
+            }
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 30px;
+        }
+    }
+    .banner-image {
+        position: relative;
+
+        img {
+            position: absolute;
+
+            &:nth-child(1) {
+                z-index: 3;
+                top: -130px;
+                left: -45px;
+            }
+            &:nth-child(2) {
+                right: 145px;
+                top: -287px;
+            }
+            &:nth-child(3) {
+                left: 25px;
+                top: -20px;
+            }
+            &:nth-child(4) {
+                right: 12%;
+                top: 118px;
+                z-index: 1;
+            }
+            &:nth-child(5) {
+                left: 28%;
+                top: -120px;
+                z-index: 2;
+            }
+            &:nth-child(6) {
+                right: 35%;
+                z-index: 1;
+                top: -150px;
+            }
+            &:nth-child(7) {
+                right: 20px;
+                top: -110px;
+            }
+            &:nth-child(8) {
+                right: 25px;
+                top: -140px;
+            }
+            &:nth-child(9) {
+                right: 30%;
+                z-index: 1;
+                top: -35px;
+            }
+            &:nth-child(10) {
+                left: 37%;
+                top: -28px;
+                z-index: 1;
+            }
+            &:nth-child(11) {
+                left: 37%;
+                top: -160px;
+                z-index: 1;
+            }
+            &:nth-child(12) {
+                left: 90px;
+                top: -110px;
+            }
+            &:nth-child(13) {
+                left: 56%;
+                top: -25px;
+                z-index: 2;
+            }
+            &:nth-child(14) {
+                right: 105px;
+                top: -28px;
+            }
+            &:last-child {
+                display: none;
+            }
+        }
+        &.single-banner-image {
+            img {
+                display: block;
+                position: relative;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+        }
+    }
+}

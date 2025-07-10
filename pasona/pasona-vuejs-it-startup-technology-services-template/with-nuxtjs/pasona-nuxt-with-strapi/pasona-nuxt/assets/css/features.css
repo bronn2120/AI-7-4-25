@@ -1,0 +1,85 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Features CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Features CSS
+=================================================*/
+.features-area {
+  padding-bottom: 50px;
+}
+
+.features-area-two {
+  overflow: hidden;
+}
+
+.single-features {
+  position: relative;
+  background: #ffffff;
+  padding-left: 95px;
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+.single-features h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.single-features .icon {
+  position: absolute;
+  text-align: center;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  background: #cdf1d8;
+  border-radius: 50%;
+  color: #44ce6f;
+  left: 20px;
+  top: 30px;
+  transition: 0.5s;
+}
+.single-features .icon i {
+  font-size: 30px;
+  position: relative;
+  top: 9px;
+}
+.single-features .icon.bg-c679e3 {
+  color: #c679e3;
+  background: #edc3fc;
+}
+.single-features .icon.bg-eb6b3d {
+  color: #eb6b3d;
+  background: rgba(235, 107, 61, 0.3);
+}
+.single-features:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+}
+.single-features:hover .icon {
+  background: #44ce6f;
+  color: #ffffff;
+}
+.single-features:hover .icon.bg-c679e3 {
+  background: #c679e3;
+}
+.single-features:hover .icon.bg-eb6b3d {
+  background: #eb6b3d;
+}/*# sourceMappingURL=features.css.map */

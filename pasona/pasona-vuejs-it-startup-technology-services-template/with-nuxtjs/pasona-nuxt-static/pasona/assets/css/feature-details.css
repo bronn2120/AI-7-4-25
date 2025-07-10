@@ -1,0 +1,144 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Features CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Features Details CSS
+=================================================*/
+.features-details-desc h3 {
+  font-size: 20px;
+  margin-bottom: 13px;
+}
+.features-details-desc .features-details-list {
+  padding: 0;
+  margin: 20px 0 0;
+  list-style-type: none;
+}
+.features-details-desc .features-details-list li {
+  margin-bottom: 12px;
+  color: #6084a4;
+  position: relative;
+  padding-left: 15px;
+}
+.features-details-desc .features-details-list li::before {
+  background: #44ce6f;
+  width: 8px;
+  height: 8px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  content: "";
+}
+.features-details-desc .features-details-list li:last-child {
+  margin-bottom: 0;
+}
+.features-details-desc .features-details-accordion {
+  margin-top: 25px;
+}
+.features-details-desc .features-details-accordion .accordion {
+  padding-left: 0;
+  list-style-type: none;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item {
+  background-color: transparent;
+  margin-bottom: 20px;
+  border-radius: 0;
+  border: none;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-button {
+  display: block;
+  padding: 15px 20px 15px 51px;
+  text-align: start;
+  box-shadow: unset;
+  position: relative;
+  color: #0e314c;
+  background-color: #f5f9ff;
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-button::before {
+  text-rendering: auto;
+  position: absolute;
+  content: "\f10e";
+  top: 0;
+  left: 0;
+  background: #44ce6f;
+  color: #ffffff;
+  width: 40px;
+  height: 100%;
+  line-height: 20px;
+  text-align: center;
+  padding-top: 15px;
+  font-family: "flaticon";
+  font-style: normal;
+  font-size: 17px;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-button.accordion__trigger_active .accordion-button::before {
+  content: "\f10f";
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body {
+  padding: 20px 20px 0;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body p strong {
+  color: var(--blackColor);
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body p a {
+  color: var(--mainColor);
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body p a:hover {
+  text-decoration: underline;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body .pl-0 {
+  padding-left: 0;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body ul {
+  margin-bottom: 15px;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body ul li {
+  margin-bottom: 12px;
+  color: var(--optionalColor);
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body ul li strong {
+  color: var(--blackColor);
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body ul li a {
+  color: var(--mainColor);
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body ul li a:hover {
+  text-decoration: underline;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body ul li:last-child {
+  margin-bottom: 0;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item .accordion-body ul:last-child {
+  margin-bottom: 0;
+}
+.features-details-desc .features-details-accordion .accordion .accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+.features-details-area .separate {
+  margin-top: 80px;
+}
+
+.features-details-image {
+  text-align: center;
+}/*# sourceMappingURL=feature-details.css.map */

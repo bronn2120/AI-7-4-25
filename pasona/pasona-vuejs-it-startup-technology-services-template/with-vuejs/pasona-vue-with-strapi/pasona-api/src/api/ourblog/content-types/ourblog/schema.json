@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "ourblogs",
+  "info": {
+    "singularName": "ourblog",
+    "pluralName": "ourblogs",
+    "displayName": "OurBlog",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "The News From Our Blog",
+      "required": true
+    },
+    "shortDesc": {
+      "type": "string",
+      "required": true,
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  }
+}

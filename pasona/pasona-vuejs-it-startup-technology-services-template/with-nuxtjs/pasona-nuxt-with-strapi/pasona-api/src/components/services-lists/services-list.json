@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_services_lists_services_lists",
+  "info": {
+    "displayName": "services-list",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

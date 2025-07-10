@@ -1,0 +1,298 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Agency Portfolio Banner CSS
+** - Our Latest Projects CSS
+** - Agency Portfolio About CSS
+** - Agency Portfolio Partner CSS
+** - Creative Area CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Agency Portfolio Main Banner CSS
+=================================================*/
+.agency-portfolio-main-banner {
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.agency-portfolio-main-banner.portfolio-banner-bg1 {
+  background-image: url(../img/agency-portfolio-main-banner/img1.jpg);
+}
+.agency-portfolio-main-banner.portfolio-banner-bg2 {
+  background-image: url(../img/agency-portfolio-main-banner/img2.jpg);
+}
+.agency-portfolio-main-banner.portfolio-banner-bg3 {
+  background-image: url(../img/agency-portfolio-main-banner/img3.jpg);
+}
+
+.portfolio-banner-content {
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -50px;
+}
+.portfolio-banner-content .sub-title {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6084a4;
+  margin-bottom: 10px;
+}
+.portfolio-banner-content h1 {
+  margin-bottom: 15px;
+  line-height: 1.3;
+  font-size: 40px;
+  font-weight: 500;
+}
+.portfolio-banner-content p {
+  font-size: 15px;
+  max-width: 490px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.portfolio-banner-content .btn {
+  margin-top: 5px;
+}
+
+.agency-portfolio-home-slides .carousel .carousel__prev, .agency-portfolio-home-slides .carousel .carousel__next {
+  margin: 0;
+  padding: 0 !important;
+  background-color: #e1e1e1;
+  color: #0e314c;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 55px;
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  border-radius: 0;
+  transform: translateY(-50%);
+  transition: 0.5s;
+  font-size: 30px;
+  opacity: 0;
+  visibility: hidden;
+}
+.agency-portfolio-home-slides .carousel .carousel__prev:hover, .agency-portfolio-home-slides .carousel .carousel__next:hover {
+  background-color: #44ce6f;
+  color: #ffffff;
+}
+.agency-portfolio-home-slides .carousel .carousel__prev.carousel__next, .agency-portfolio-home-slides .carousel .carousel__next.carousel__next {
+  left: auto;
+  right: 40px;
+}
+.agency-portfolio-home-slides .carousel:hover .carousel__prev, .agency-portfolio-home-slides .carousel:hover .carousel__next {
+  opacity: 1;
+  visibility: visible;
+}
+.agency-portfolio-home-slides .agency-portfolio-main-banner {
+  width: 100%;
+}
+
+/*================================================
+Our Latest Projects CSS
+=================================================*/
+.our-latest-projects {
+  padding-bottom: 50px;
+  position: relative;
+  z-index: 1;
+}
+.our-latest-projects .section-title p {
+  margin-left: 0;
+}
+
+.projects-items {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.projects-items .single-latest-projects {
+  margin-bottom: 30px;
+  position: relative;
+}
+.projects-items .single-latest-projects .link-btn {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+.projects-items .single-latest-projects .content {
+  position: absolute;
+  left: -5%;
+  top: 60%;
+  transform: translateY(-60%);
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+  background-color: #ffffff;
+  box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+  padding: 25px;
+  margin-top: 20px;
+}
+.projects-items .single-latest-projects .content span {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.projects-items .single-latest-projects .content h3 {
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 20px;
+}
+.projects-items .single-latest-projects:hover .content {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0;
+}
+
+.shorting-menu {
+  text-align: right;
+}
+.shorting-menu button {
+  background-color: transparent;
+  cursor: pointer;
+  color: #848484;
+  transition: 0.5s;
+  margin-right: 15px;
+  padding: 0;
+  outline: 0;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+.shorting-menu button:hover, .shorting-menu button.active {
+  color: #0e314c;
+}
+.shorting-menu button:last-child {
+  margin-right: 0;
+}
+
+/*================================================
+Agency Portfolio About CSS
+=================================================*/
+.agency-portfolio-about-area {
+  background-color: #f4f4f4;
+}
+
+.single-text-box h3 {
+  margin-bottom: 12px;
+  margin-top: 25px;
+  font-weight: 600;
+  font-size: 22px;
+}
+.single-text-box .learn-more-btn {
+  color: #365267;
+  font-size: 14px;
+  font-weight: 600;
+}
+.single-text-box .learn-more-btn i {
+  position: relative;
+  top: 4px;
+}
+.single-text-box .learn-more-btn svg {
+  width: 18px;
+  position: relative;
+  top: -1px;
+  margin-right: 3px;
+}
+.single-text-box .learn-more-btn:hover {
+  color: #44ce6f;
+}
+
+/*================================================
+Agency Portfolio Partner CSS
+=================================================*/
+.agency-portfolio-partner-area {
+  background-color: #0e314c;
+}
+
+.single-agency-portfolio-partner {
+  text-align: center;
+}
+.single-agency-portfolio-partner a {
+  display: block;
+}
+.single-agency-portfolio-partner a img {
+  width: auto !important;
+  display: inline-block !important;
+}
+
+/*================================================
+Creative Area CSS
+=================================================*/
+.creative-area {
+  height: 650px;
+  background-image: url(../img/creative-bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.creative-area .container {
+  position: relative;
+}
+.creative-area .d-table-cell {
+  vertical-align: bottom;
+}
+
+.creative-inner-area {
+  max-width: 600px;
+  margin-left: auto;
+}
+.creative-inner-area .single-counter {
+  background-color: #0e314c;
+  padding: 60px;
+}
+.creative-inner-area .single-counter h3 {
+  color: #ffffff;
+  margin-bottom: 5px;
+  font-size: 32px;
+  font-weight: 700;
+}
+.creative-inner-area .single-counter h3 .odometer-formatting-mark {
+  display: none;
+}
+.creative-inner-area .single-counter p {
+  margin-bottom: 0;
+  line-height: initial;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+}
+.creative-inner-area .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.creative-inner-area .col-lg-6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.creative-inner-area .col-lg-6:nth-child(1) .single-counter {
+  background-color: #44ce6f;
+}
+.creative-inner-area .col-lg-6:nth-child(2) .single-counter {
+  background-color: #0e314c;
+}/*# sourceMappingURL=agency-portfolio.css.map */

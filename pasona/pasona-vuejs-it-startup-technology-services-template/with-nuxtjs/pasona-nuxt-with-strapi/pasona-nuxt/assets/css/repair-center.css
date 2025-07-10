@@ -1,0 +1,491 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Repair Main Banner CSS
+** - Repair Partner CSS
+** - Repair About CSS
+** - Repair Services CSS
+** - Repair Why Choose Us CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Repair Main Banner CSS
+=================================================*/
+.repair-main-banner {
+  overflow-x: hidden;
+  padding-top: 200px;
+  padding-bottom: 140px;
+}
+
+.repair-banner-content h1 {
+  margin-bottom: 20px;
+  font-size: 45px;
+  font-weight: 500;
+}
+.repair-banner-content p {
+  margin-bottom: 30px;
+}
+
+.repair-banner-image {
+  position: relative;
+  text-align: center;
+}
+.repair-banner-image img:nth-child(2) {
+  position: absolute;
+  left: 0;
+  top: -65px;
+  right: -30px;
+  margin: 0 auto;
+  z-index: -1;
+}
+.repair-banner-image img:nth-child(3) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: -69px;
+  z-index: -2;
+}
+.repair-banner-image img:nth-child(4) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -30px;
+  z-index: -1;
+  margin: 0 auto;
+}
+
+/*================================================
+Repair Partner CSS
+=================================================*/
+.repair-partner-area {
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.single-repair-partner {
+  text-align: center;
+}
+.single-repair-partner a {
+  display: block;
+  position: relative;
+}
+.single-repair-partner a img {
+  width: auto !important;
+  display: inline-block !important;
+}
+.single-repair-partner a img:last-child {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+}
+.single-repair-partner a:hover img:last-child, .single-repair-partner a:focus img:last-child {
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+}
+
+.partner-slides.owl-theme .owl-dots {
+  margin-top: 0;
+}
+
+/*================================================
+Repair About CSS
+=================================================*/
+.repair-about-content .sub-title {
+  text-transform: uppercase;
+  color: #44ce6f;
+  display: block;
+  font-size: 15px;
+  font-weight: 400;
+}
+.repair-about-content h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.repair-about-content ul {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -10px;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.repair-about-content ul li {
+  flex: 0 0 50%;
+  max-width: 50%;
+  width: 100%;
+  margin-top: 25px;
+  color: #6084a4;
+  position: relative;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.repair-about-content ul li span {
+  display: block;
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+  border-radius: 3px;
+  transition: 0.5s;
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+}
+.repair-about-content ul li span i, .repair-about-content ul li span .feather {
+  margin-right: 5px;
+  display: inline-block;
+  color: #44ce6f;
+  transition: 0.5s;
+  width: 18px;
+}
+.repair-about-content ul li span::before {
+  content: "";
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  border-radius: 3px;
+  z-index: -1;
+  transition: 0.5s;
+}
+.repair-about-content ul li span:hover, .repair-about-content ul li span:focus {
+  color: #ffffff;
+  transform: translateY(-5px);
+}
+.repair-about-content ul li span:hover::before, .repair-about-content ul li span:focus::before {
+  opacity: 1;
+  visibility: visible;
+}
+.repair-about-content ul li span:hover svg, .repair-about-content ul li span:focus svg {
+  color: #ffffff;
+}
+
+.repair-about-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.repair-about-image img {
+  position: absolute;
+}
+.repair-about-image img:nth-child(1) {
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.repair-about-image img:nth-child(2) {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  text-align: center;
+  z-index: 2;
+  margin: 0 auto;
+  border: 5px solid #f8fbff;
+  width: 350px;
+}
+.repair-about-image img:nth-child(3) {
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.repair-about-image img:nth-child(4) {
+  right: 0;
+  top: 0;
+}
+.repair-about-image img:nth-child(5) {
+  left: 0;
+  bottom: 0;
+}
+
+/*================================================
+Repair Services CSS
+=================================================*/
+.repair-services-area {
+  padding-bottom: 50px;
+}
+
+.single-repair-services {
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+  padding: 40px 30px;
+  text-align: center;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.single-repair-services.bg1 {
+  background-image: url(../img/repair-services-img/1.jpg);
+}
+.single-repair-services.bg2 {
+  background-image: url(../img/repair-services-img/2.jpg);
+}
+.single-repair-services.bg3 {
+  background-image: url(../img/repair-services-img/3.jpg);
+}
+.single-repair-services.bg4 {
+  background-image: url(../img/repair-services-img/4.jpg);
+}
+.single-repair-services.bg5 {
+  background-image: url(../img/repair-services-img/5.jpg);
+}
+.single-repair-services.bg6 {
+  background-image: url(../img/repair-services-img/6.jpg);
+}
+.single-repair-services::before {
+  position: absolute;
+  transition: 0.5s;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: -1;
+  border: 1px dashed #cdf1d8;
+}
+.single-repair-services::after {
+  position: absolute;
+  transition: 0.5s;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  border: 1px dashed #cdf1d8;
+}
+.single-repair-services h3 {
+  font-size: 18px;
+  transition: 0.5s;
+  margin-top: 22px;
+  margin-bottom: 17px;
+}
+.single-repair-services .icon {
+  display: inline-block;
+  color: #44ce6f;
+  width: 85px;
+  height: 85px;
+  line-height: 83px;
+  border: 1px solid #e3f7e9;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+.single-repair-services .icon i::before {
+  font-size: 35px;
+}
+.single-repair-services p {
+  margin-bottom: 25px;
+  transition: 0.5s;
+}
+.single-repair-services a {
+  width: 35px;
+  background-color: #f9fafb;
+  height: 35px;
+  line-height: 25px;
+  color: #0e314c;
+  border-radius: 50%;
+}
+.single-repair-services a i, .single-repair-services a .feather {
+  width: 15px;
+  position: relative;
+  top: 5px;
+}
+.single-repair-services:hover::before, .single-repair-services:focus::before {
+  opacity: 0;
+  visibility: hidden;
+}
+.single-repair-services:hover::after, .single-repair-services:focus::after {
+  opacity: 0.85;
+  visibility: visible;
+}
+.single-repair-services:hover h3, .single-repair-services:focus h3 {
+  color: #ffffff;
+}
+.single-repair-services:hover p, .single-repair-services:focus p {
+  color: #ffffff;
+}
+.single-repair-services:hover .icon, .single-repair-services:focus .icon {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.single-repair-services:hover a, .single-repair-services:focus a {
+  background-color: #ffffff;
+  color: #44ce6f;
+}
+
+/*================================================
+Repair CTA CSS
+=================================================*/
+.repair-cta-area {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.cta-repair-content h3 {
+  color: #ffffff;
+  font-size: 25px;
+  margin-bottom: 17px;
+}
+.cta-repair-content p {
+  color: #ffffff;
+  opacity: 0.95;
+  margin-bottom: 25px;
+}
+
+.cta-repair-img {
+  text-align: right;
+}
+
+.circle-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.cta-shape {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+/*================================================
+Repair Why Choose Us CSS
+=================================================*/
+.repair-why-choose-us {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+}
+.repair-why-choose-us .section-title h2 {
+  color: #ffffff;
+}
+.repair-why-choose-us .section-title .bar::before {
+  background: #ffffff;
+}
+.repair-why-choose-us .section-title p {
+  color: #ffffff;
+  opacity: 0.95;
+}
+.repair-why-choose-us::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 37%;
+  width: 100%;
+  background: #ffffff;
+  z-index: -1;
+}
+
+.single-repair-box {
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px dashed #cdf1d8;
+  padding: 30px;
+  position: relative;
+  z-index: 1;
+  transition: 0.5s;
+}
+.single-repair-box h3 {
+  font-size: 18px;
+  margin-top: 22px;
+  margin-bottom: 17px;
+}
+.single-repair-box p {
+  margin-bottom: 25px;
+}
+.single-repair-box a {
+  width: 40px;
+  background-color: #eef0f3;
+  height: 40px;
+  line-height: 40px;
+  color: #0e314c;
+  border-radius: 50%;
+}
+.single-repair-box a i {
+  width: 18px;
+}
+.single-repair-box .icon {
+  display: inline-block;
+  border: 1px solid #6ee9fa;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  position: relative;
+  color: #ffffff;
+  z-index: 1;
+}
+.single-repair-box .icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  bottom: 0;
+  background: linear-gradient(to right bottom, #1fa2ff, #00c0ff, #00d9f2, #53eedd, #a6ffcb);
+  border-radius: 50%;
+  margin: 6px;
+  transition: 0.5s;
+}
+.single-repair-box .icon i::before {
+  font-size: 35px;
+}
+.single-repair-box .back-icon {
+  position: absolute;
+  top: 58%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: #4457c3;
+  opacity: 0.06;
+  z-index: -1;
+}
+.single-repair-box .back-icon i::before {
+  font-size: 200px;
+}
+.single-repair-box:hover, .single-repair-box:focus {
+  border-color: #44ce6f;
+}
+.single-repair-box:hover a, .single-repair-box:focus a {
+  background-color: #44ce6f;
+  color: #ffffff;
+}/*# sourceMappingURL=repair-center.css.map */

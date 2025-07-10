@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "whatuserssayings",
+  "info": {
+    "singularName": "whatuserssaying",
+    "pluralName": "whatuserssayings",
+    "displayName": "WhatUsersSaying",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true,
+      "default": "What users Saying"
+    },
+    "shortDesc": {
+      "type": "string",
+      "required": true,
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    "feedbackItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "feedback-items.feedback-item",
+      "required": true
+    }
+  }
+}

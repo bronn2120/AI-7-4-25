@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "faqs",
+  "info": {
+    "singularName": "faq",
+    "pluralName": "faqs",
+    "displayName": "FAQ"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "accordions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "accordion-items.accordion-item",
+      "required": true
+    }
+  }
+}

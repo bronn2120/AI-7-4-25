@@ -1,0 +1,77 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "shortDesc": {
+      "type": "string",
+      "required": true,
+      "default": "Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis."
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "Company"
+    },
+    "companyLists": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer-lists.footer-list",
+      "required": true
+    },
+    "titleTwo": {
+      "type": "string",
+      "required": true,
+      "default": "Support"
+    },
+    "supportLists": {
+      "type": "component",
+      "repeatable": true,
+      "component": "footer-lists.footer-list",
+      "required": true
+    },
+    "titleThree": {
+      "type": "string",
+      "required": true,
+      "default": "Address"
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "default": "27 Division St, New York, NY 10002, USA"
+    },
+    "email": {
+      "type": "email",
+      "default": "pasona@gmail.com",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true,
+      "default": "321984754"
+    },
+    "socialLink": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social-links.social-link",
+      "required": true
+    }
+  }
+}

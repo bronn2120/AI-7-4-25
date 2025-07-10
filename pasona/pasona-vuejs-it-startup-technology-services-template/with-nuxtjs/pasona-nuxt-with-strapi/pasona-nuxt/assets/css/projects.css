@@ -1,0 +1,111 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Works CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Works CSS
+=================================================*/
+.works-area {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 50px;
+}
+
+.single-works {
+  position: relative;
+  margin-bottom: 30px;
+}
+.single-works::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+}
+.single-works .icon {
+  position: absolute;
+  border-radius: 50%;
+  top: 0;
+  right: 25px;
+  background: #ffffff;
+  width: 45px;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  opacity: 0;
+  transition: 0.5s;
+  visibility: hidden;
+}
+.single-works .icon svg {
+  width: 19px;
+}
+.single-works .icon i {
+  font-size: 25px;
+  position: relative;
+  top: 5px;
+}
+.single-works .icon:hover {
+  background: #0e314c;
+  color: #ffffff;
+}
+.single-works .works-content {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  padding: 20px;
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+}
+.single-works .works-content h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.single-works .works-content h3 a {
+  color: #ffffff;
+}
+.single-works .works-content p {
+  color: #ffffff;
+}
+.single-works:hover::before {
+  opacity: 0.8;
+  visibility: visible;
+}
+.single-works:hover .icon {
+  opacity: 1;
+  visibility: visible;
+  top: 25px;
+}
+.single-works:hover .works-content {
+  opacity: 1;
+  visibility: visible;
+  bottom: 0;
+}
+
+.works-slides .carousel {
+  text-align: left;
+}
+.works-slides .single-works {
+  margin-left: 15px;
+  margin-right: 15px;
+}/*# sourceMappingURL=projects.css.map */

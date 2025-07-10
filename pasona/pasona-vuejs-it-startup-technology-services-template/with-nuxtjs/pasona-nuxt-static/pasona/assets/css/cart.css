@@ -1,0 +1,173 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Cart CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Cart CSS
+=================================================*/
+.cart-table table {
+  margin-bottom: 0;
+}
+.cart-table table thead tr {
+  border-top: none;
+  border-color: #eaedff;
+}
+.cart-table table thead tr th {
+  border-bottom-width: 0px;
+  vertical-align: middle;
+  font-weight: 500;
+  padding: 15px 0;
+  font-size: 15px;
+  border: none;
+}
+.cart-table table tbody tr {
+  border-color: #eaedff;
+}
+.cart-table table tbody tr td {
+  vertical-align: middle;
+  color: #6084a4;
+  padding-left: 0;
+  padding-right: 0;
+  border-color: #eaedff;
+  border-left: none;
+  border-right: none;
+}
+.cart-table table tbody tr td.product-thumbnail a {
+  display: block;
+}
+.cart-table table tbody tr td.product-thumbnail a img {
+  width: 80px;
+}
+.cart-table table tbody tr td.product-name a {
+  color: #6084a4;
+  font-weight: 500;
+  display: inline-block;
+}
+.cart-table table tbody tr td.product-name a:hover {
+  color: #44ce6f;
+}
+.cart-table table tbody tr td.product-subtotal .remove {
+  color: red;
+  margin-left: 25px;
+  position: relative;
+  top: -1px;
+  float: right;
+}
+.cart-table table tbody tr td.product-subtotal .remove svg {
+  width: 19px;
+}
+.cart-table table tbody tr td.product-quantity .input-counter {
+  max-width: 110px;
+  min-width: 110px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  border: 1px solid #eee;
+}
+.cart-table table tbody tr td.product-quantity .input-counter span {
+  position: absolute;
+  top: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: #6084a4;
+  width: 40px;
+  height: 100%;
+  line-height: 40px;
+  transition: 0.5s;
+}
+.cart-table table tbody tr td.product-quantity .input-counter span.minus-btn {
+  left: 0;
+}
+.cart-table table tbody tr td.product-quantity .input-counter span.plus-btn {
+  right: 0;
+}
+.cart-table table tbody tr td.product-quantity .input-counter span svg {
+  width: 20px;
+}
+.cart-table table tbody tr td.product-quantity .input-counter span:hover {
+  color: #44ce6f;
+}
+.cart-table table tbody tr td.product-quantity .input-counter input {
+  height: 45px;
+  color: #0e314c;
+  outline: 0;
+  display: block;
+  border: none;
+  background-color: #f8f8f8;
+  text-align: center;
+  width: 100%;
+  font-size: 17px;
+  font-weight: 500;
+}
+.cart-table table tbody tr td.product-quantity .input-counter input::-moz-placeholder {
+  color: #0e314c;
+}
+.cart-table table tbody tr td.product-quantity .input-counter input::placeholder {
+  color: #0e314c;
+}
+
+.cart-buttons {
+  margin-top: 30px;
+}
+.cart-buttons .btn-light {
+  background-color: #eaedff;
+}
+.cart-buttons .btn-light:hover, .cart-buttons .btn-light:focus {
+  color: #ffffff;
+}
+.cart-buttons .btn-light:hover:not(:disabled):not(.disabled).active, .cart-buttons .btn-light:hover:not(:disabled):not(.disabled):active, .cart-buttons .btn-light:hover .show > .btn-light.dropdown-toggle, .cart-buttons .btn-light:focus:not(:disabled):not(.disabled).active, .cart-buttons .btn-light:focus:not(:disabled):not(.disabled):active, .cart-buttons .btn-light:focus .show > .btn-light.dropdown-toggle {
+  color: #ffffff;
+}
+.cart-buttons .btn-light:focus {
+  color: #ffffff;
+}
+
+.cart-totals {
+  background: #ffffff;
+  padding: 40px;
+  max-width: 600px;
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 5px;
+  margin-left: auto;
+}
+.cart-totals h3 {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+.cart-totals ul {
+  padding: 0;
+  margin: 0 0 25px;
+  list-style-type: none;
+}
+.cart-totals ul li {
+  border: 1px solid #eaedff;
+  padding: 10px 15px;
+  color: #0e314c;
+  overflow: hidden;
+}
+.cart-totals ul li:first-child {
+  border-bottom: none;
+}
+.cart-totals ul li:last-child {
+  border-top: none;
+}
+.cart-totals ul li span {
+  float: right;
+  color: #6084a4;
+}/*# sourceMappingURL=cart.css.map */

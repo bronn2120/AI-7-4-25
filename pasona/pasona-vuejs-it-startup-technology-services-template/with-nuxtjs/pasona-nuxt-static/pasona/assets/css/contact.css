@@ -1,0 +1,64 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Blog Details CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Contact CSS
+=================================================*/
+.contact-info-box {
+  text-align: center;
+  transition: 0.4s;
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  padding: 30px;
+}
+.contact-info-box .icon {
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  background: #f7fafd;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #44ce6f;
+  transition: 0.4s;
+}
+.contact-info-box h3 {
+  margin: 25px 0 15px;
+  font-size: 18px;
+}
+.contact-info-box p {
+  margin-bottom: 0;
+}
+.contact-info-box p a {
+  color: #6084a4;
+}
+.contact-info-box p a:hover {
+  color: #44ce6f;
+}
+.contact-info-box:hover {
+  transform: translateY(-10px);
+}
+.contact-info-box:hover .icon {
+  color: #ffffff;
+  background: #44ce6f;
+}
+
+#contactForm .btn {
+  margin-top: 10px;
+}/*# sourceMappingURL=contact.css.map */

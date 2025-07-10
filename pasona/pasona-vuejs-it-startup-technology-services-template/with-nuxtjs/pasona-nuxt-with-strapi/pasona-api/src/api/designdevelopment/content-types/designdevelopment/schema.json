@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "designdevelopments",
+  "info": {
+    "singularName": "designdevelopment",
+    "pluralName": "designdevelopments",
+    "displayName": "DesignDevelopment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "heading": {
+      "type": "string",
+      "required": true,
+      "default": "Design & Development"
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    "services": {
+      "type": "component",
+      "repeatable": true,
+      "component": "services-lists.services-list",
+      "required": true
+    }
+  }
+}

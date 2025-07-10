@@ -1,0 +1,182 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Features CSS
+*/
+
+/*================================================
+Default CSS
+=================================================*/
+$font-family: 'Poppins', sans-serif;
+$light-green-color: #44ce6f;
+$white-color: #ffffff;
+$black-color: #0e314c;
+$navlink-color: #4a6f8a;
+$paragraph-color: #6084a4;
+$purple-color: #c679e3;
+$bg-color: #f7fafd;
+$bg-color2: #f9f6f6;
+$hosting-main-color: #032b8d;
+$gradient-color: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+$gradient-color2: linear-gradient(to right bottom, #1fa2ff, #00c0ff, #00d9f2, #53eedd, #a6ffcb);
+$transition: .5s;
+$font-size: 14px;
+
+/*================================================
+Features Details CSS
+=================================================*/
+.features-details-desc {
+    h3 {
+        font-size: 20px;
+        margin-bottom: 13px;
+    }
+    .features-details-list {
+        padding: 0;
+        margin: 20px 0 0;
+        list-style-type: none;
+
+        li {
+            margin-bottom: 12px;
+            color: $paragraph-color;
+            position: relative;
+            padding-left: 15px;
+
+            &::before {
+                background: $light-green-color;
+                width: 8px;
+                height: 8px;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                position: absolute;
+                content: '';
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .features-details-accordion {
+        margin-top: 25px;
+
+        .accordion {
+            padding-left: 0;
+            list-style-type: none;
+    
+            .accordion-item {
+                background-color: transparent;
+                margin-bottom: 20px;
+                border-radius: 0;
+                border: none;
+        
+                .accordion-button {
+                    display: block;
+                    padding: 15px 20px 15px 51px;
+                    text-align: start;
+                    box-shadow: unset;
+                    position: relative;
+                    color: #0e314c;
+                    background-color: #f5f9ff;
+                    border-bottom: 1px solid #eeeeee;
+                    cursor: pointer;
+                    font: {
+                        size: 16px;
+                        weight: 500;
+                    };
+                    &::before {
+                        text-rendering: auto;
+                        position: absolute;
+                        content: "\f10e";
+                        top: 0;
+                        left: 0;
+                        background: #44ce6f;
+                        color: #ffffff;
+                        width: 40px;
+                        height: 100%;
+                        line-height: 20px;
+                        text-align: center;
+                        padding-top: 15px;
+                        font: {
+                            family: "flaticon";
+                            style: normal;
+                            size: 17px;
+                        };
+                    }
+                    &.accordion__trigger_active {
+                        .accordion-button {
+                            &::before {
+                                content: "\f10f";
+                            }
+                        }
+                    }
+                }
+                .accordion-body {
+                    padding: 20px 20px 0;
+        
+                    p {
+                        strong {
+                            color: var(--blackColor);
+                        }
+                        a {
+                            color: var(--mainColor);
+        
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                    .pl-0 {
+                        padding-left: 0;
+                    }
+                    ul {
+                        margin-bottom: 15px;
+        
+                        li {
+                            margin-bottom: 12px;
+                            color: var(--optionalColor);
+                            
+                            strong {
+                                color: var(--blackColor);
+                            }
+                            a {
+                                color: var(--mainColor);
+        
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+.features-details-area {
+    .separate {
+        margin-top: 80px;
+    }
+}
+.features-details-image {
+    text-align: center;
+}

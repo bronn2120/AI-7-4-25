@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "pricingplans",
+  "info": {
+    "singularName": "pricingplan",
+    "pluralName": "pricingplans",
+    "displayName": "PricingPlan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true,
+      "default": "Pricing Plans"
+    },
+    "shortDesc": {
+      "type": "string",
+      "required": true,
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    "pricingItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pricing-items.pricing-item",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "boxescontents",
+  "info": {
+    "singularName": "boxescontent",
+    "pluralName": "boxescontents",
+    "displayName": "BoxesContent",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "boxes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "box-items.box-item",
+      "required": true
+    }
+  }
+}

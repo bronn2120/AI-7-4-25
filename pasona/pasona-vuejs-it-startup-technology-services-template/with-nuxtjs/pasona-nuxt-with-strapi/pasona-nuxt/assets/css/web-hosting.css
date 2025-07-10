@@ -1,0 +1,469 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Main Banner CSS
+** - Boxes CSS
+** - Domain CSS
+** - Why Choose US CSS
+** - Hosting Features CSS
+** - CTA CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Main Banner CSS
+=================================================*/
+.hosting-main-banner {
+  position: relative;
+  z-index: 1;
+  background-color: #032b8d;
+  padding-top: 250px;
+  padding-bottom: 190px;
+}
+.hosting-main-banner .hosting-banner-content h1 {
+  font-size: 45px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+.hosting-main-banner .hosting-banner-content ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.hosting-main-banner .hosting-banner-content ul li {
+  margin-bottom: 12px;
+  color: #ffffff;
+  position: relative;
+  padding-left: 30px;
+}
+.hosting-main-banner .hosting-banner-content ul li::before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 2px;
+  background: #44ce6f;
+  content: "";
+}
+.hosting-main-banner .hosting-banner-content ul li:last-child {
+  margin-bottom: 0;
+}
+.hosting-main-banner .hosting-banner-content p {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 30px;
+  margin-top: 25px;
+}
+.hosting-main-banner .hosting-banner-content p span {
+  text-decoration: line-through;
+}
+.hosting-main-banner .hosting-banner-image {
+  position: relative;
+}
+.hosting-main-banner .hosting-banner-image img {
+  position: absolute;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(1) {
+  top: -175px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(2) {
+  top: 184px;
+  left: 21%;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(3) {
+  top: 177px;
+  right: 38px;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(4) {
+  left: 29%;
+  right: 0;
+  top: -15px;
+  margin: 0 auto;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(5) {
+  right: 8px;
+  top: -107px;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(6) {
+  left: 18%;
+  top: -175px;
+  z-index: -1;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(7) {
+  top: -235px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(8) {
+  left: 27%;
+  top: -200px;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(9) {
+  z-index: -2;
+  top: 40px;
+  left: 80px;
+  right: 0;
+  margin: 0 auto;
+}
+.hosting-main-banner .hosting-banner-image img:nth-child(10) {
+  display: none;
+}
+.hosting-main-banner .hosting-banner-image.single-hosting-banner-image img {
+  display: block;
+  position: relative;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/*================================================
+Boxes CSS
+=================================================*/
+.hosting-boxes-area {
+  background-color: #032b8d;
+  margin-top: 0;
+}
+.hosting-boxes-area .single-box {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.hosting-boxes-area .single-box .icon {
+  line-height: 55px;
+}
+
+/*================================================
+Domain Search CSS
+=================================================*/
+.domain-search-content {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto;
+}
+.domain-search-content h2 {
+  text-transform: capitalize;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.domain-search-content form {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  overflow: hidden;
+  border-radius: 30px;
+}
+.domain-search-content form .form-control {
+  background-color: #ffffff;
+  border: none;
+  height: 55px;
+  padding-left: 20px;
+  float: left;
+  width: 63%;
+}
+.domain-search-content form .domain-select {
+  float: left;
+  width: 15%;
+  padding-right: 20px;
+}
+.domain-search-content form .domain-select .form-control {
+  padding: 0;
+  float: unset;
+  width: 100%;
+  cursor: pointer;
+  height: 55px;
+}
+.domain-search-content form button {
+  box-shadow: unset !important;
+  float: left;
+  width: 22%;
+  height: 55px;
+  border-radius: 30px;
+  background-color: #44ce6f;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14px;
+  outline: 0;
+  cursor: pointer;
+  border: none;
+  padding: 15px 40px;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.domain-search-content form button:hover, .domain-search-content form button:focus {
+  background-color: #c679e3;
+}
+.domain-search-content ul {
+  padding: 0;
+  margin: 30px 0 0;
+  list-style-type: none;
+  display: flex;
+  width: 100%;
+}
+.domain-search-content ul li {
+  display: block;
+  flex: 1;
+  font-weight: 500;
+  border-left: 1px solid #eeeeee;
+}
+.domain-search-content ul li:first-child {
+  border-left: none;
+}
+
+/*================================================
+Why Choose US CSS
+=================================================*/
+.why-choose-us {
+  background: transparent url(../img/banner-bg1.jpg) right top no-repeat;
+  position: relative;
+  z-index: 1;
+}
+.why-choose-us .section-title {
+  text-align: left;
+}
+.why-choose-us .section-title .bar {
+  margin-left: 0;
+  margin-right: 0;
+}
+.why-choose-us .section-title p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.why-choose-us-image {
+  position: relative;
+  text-align: center;
+}
+.why-choose-us-image .main-pic {
+  display: none;
+}
+.why-choose-us-image img:nth-child(1) {
+  position: relative;
+  left: -20px;
+}
+.why-choose-us-image img:nth-child(3) {
+  position: absolute;
+  top: -55px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  z-index: -1;
+}
+.why-choose-us-image.single-why-choose-us-image img {
+  display: block;
+  position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.col-lg-6 .col-lg-6:nth-child(1) .single-why-choose-us {
+  margin-top: 60px;
+}
+.col-lg-6 .col-lg-6:nth-child(2) .single-why-choose-us {
+  margin-top: 0;
+}
+.col-lg-6 .col-lg-6:nth-child(4) .single-why-choose-us {
+  margin-top: -30px;
+}
+
+.single-why-choose-us {
+  padding: 30px 15px;
+  border-radius: 5px;
+  text-align: center;
+  background: #ffffff;
+  box-shadow: 0 0 30px rgba(56, 46, 46, 0.1);
+  transition: 0.5s;
+  margin-top: 30px;
+}
+.single-why-choose-us .icon {
+  color: #44ce6f;
+  transition: 0.5s;
+}
+.single-why-choose-us .icon i::before {
+  font-size: 45px;
+}
+.single-why-choose-us h3 {
+  font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  transition: 0.5s;
+}
+.single-why-choose-us::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border-radius: 5px;
+  height: 100%;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+.single-why-choose-us p {
+  transition: 0.5s;
+}
+.single-why-choose-us:hover {
+  transform: translateY(-9px);
+  border-color: transparent;
+}
+.single-why-choose-us:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.single-why-choose-us:hover .icon {
+  color: #ffffff;
+}
+.single-why-choose-us:hover h3, .single-why-choose-us:hover p {
+  color: #ffffff;
+}
+
+/*================================================
+Hosting Features CSS
+=================================================*/
+.hosting-features-area {
+  padding-bottom: 50px;
+}
+
+.single-hosting-features {
+  position: relative;
+  background: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  transition: 0.5s;
+  padding-left: 20px;
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+}
+.single-hosting-features h3 {
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+.single-hosting-features .icon {
+  text-align: center;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  background: #cdf1d8;
+  display: inline-block;
+  border-radius: 50%;
+  color: #44ce6f;
+  transition: 0.5s;
+}
+.single-hosting-features .icon.bg-c679e3 {
+  color: #c679e3;
+  background: #edc3fc;
+}
+.single-hosting-features .icon.bg-eb6b3d {
+  color: #eb6b3d;
+  background: rgba(235, 107, 61, 0.3);
+}
+.single-hosting-features::before, .single-hosting-features::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 4px;
+  background: #44ce6f;
+  opacity: 0;
+  visibility: hidden;
+  bottom: 0;
+  transition: 0.5s;
+}
+.single-hosting-features::before {
+  left: 0;
+}
+.single-hosting-features::after {
+  right: 0;
+}
+.single-hosting-features:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+}
+.single-hosting-features:hover .icon {
+  background: #44ce6f;
+  color: #ffffff;
+}
+.single-hosting-features:hover .icon.bg-c679e3 {
+  background: #c679e3;
+}
+.single-hosting-features:hover .icon.bg-eb6b3d {
+  background: #eb6b3d;
+}
+.single-hosting-features:hover::after, .single-hosting-features:hover::before {
+  opacity: 1;
+  visibility: visible;
+  width: 50%;
+}
+
+/*================================================
+CTA CSS
+=================================================*/
+.cta-area {
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+}
+.cta-area .container {
+  max-width: 945px;
+}
+
+.cta-content h3 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.cta-right-content {
+  text-align: right;
+}
+.cta-right-content .hosting-price {
+  display: inline-block;
+}
+.cta-right-content .hosting-price span {
+  color: #f6fe6a;
+  display: block;
+}
+.cta-right-content .hosting-price h4 {
+  margin: 10px 0 0;
+  color: #ffffff;
+  font-size: 20px;
+}
+.cta-right-content .buy-btn {
+  display: inline-block;
+  padding-left: 35px;
+  position: relative;
+  top: -15px;
+}
+.cta-right-content .buy-btn .btn-primary {
+  background: #c679e3;
+  box-shadow: 0 13px 27px 0 rgba(198, 121, 227, 0.25);
+}
+.cta-right-content .buy-btn .btn-primary::after, .cta-right-content .buy-btn .btn-primary::before {
+  background: #ffffff;
+  box-shadow: 0 13px 27px 0 rgba(68, 206, 111, 0.25);
+}
+.cta-right-content .buy-btn .btn-primary:hover, .cta-right-content .buy-btn .btn-primary:focus {
+  color: #44ce6f;
+}/*# sourceMappingURL=web-hosting.css.map */

@@ -1,0 +1,372 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - IoT Main Banner CSS
+** - IoT Partner CSS
+** - Iot Services CSS
+** - IoT CTA CSS
+** - IoT Features CSS
+** - IoT Why Choose Us CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+IoT Main Banner CSS
+=================================================*/
+.iot-main-banner {
+  position: relative;
+  z-index: 1;
+  padding-top: 215px;
+  padding-bottom: 150px;
+}
+
+.iot-banner-content {
+  max-width: 445px;
+}
+.iot-banner-content span {
+  color: #44ce6f;
+  font-size: 15px;
+  display: block;
+}
+.iot-banner-content h2 {
+  font-size: 40px;
+  margin-top: 7px;
+  margin-bottom: 17px;
+  line-height: 1.3;
+}
+.iot-banner-content .btn {
+  margin-top: 10px;
+}
+
+.iot-banner-image {
+  position: absolute;
+  text-align: center;
+  right: 30px;
+  top: 56%;
+  transform: translateY(-50%);
+}
+.iot-banner-image img:first-child {
+  max-width: 730px;
+}
+.iot-banner-image img:last-child {
+  position: absolute;
+  left: -118px;
+  right: 0;
+  margin: 0 auto;
+  top: 39px;
+  z-index: -1;
+}
+
+.animate-border span {
+  position: absolute;
+  display: block;
+  width: 5%;
+  padding-bottom: 5%;
+  top: 51%;
+  left: 67%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  backface-visibility: hidden;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: -2;
+}
+.animate-border span:nth-child(1) {
+  animation: 4.2s ease-out 0.5s infinite normal none running pulsei;
+}
+.animate-border span:nth-child(2) {
+  animation: 4.2s ease-out 1.5s infinite normal none running pulsei;
+}
+.animate-border span:nth-child(3) {
+  animation: 4.2s ease-out 2.5s infinite normal none running pulsei;
+}
+.animate-border span:nth-child(4) {
+  animation: 4.2s ease-out 3.5s infinite normal none running pulsei;
+}
+
+@keyframes pulsei {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    border: 1.5px solid #b3eaf8;
+    opacity: 1;
+    width: 5%;
+    padding-bottom: 5%;
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 0;
+    width: 50%;
+    border: 1.5px solid #b3eaf8;
+    padding-bottom: 50%;
+  }
+}
+/*================================================
+IoT Partner CSS
+=================================================*/
+.iot-partner-area {
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.single-iot-partner {
+  text-align: center;
+}
+.single-iot-partner a {
+  display: block;
+  position: relative;
+}
+.single-iot-partner a img {
+  width: auto !important;
+  display: inline-block !important;
+}
+.single-iot-partner a img:last-child {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+}
+.single-iot-partner a:hover img:last-child, .single-iot-partner a:focus img:last-child {
+  opacity: 1;
+  visibility: visible;
+  top: 0;
+}
+
+/*================================================
+Iot Services CSS
+=================================================*/
+.iot-services-area {
+  padding-bottom: 50px;
+}
+
+.single-iot-services {
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+  padding: 40px 30px;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px dashed #cdf1d8;
+}
+.single-iot-services::after {
+  position: absolute;
+  transition: 0.5s;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+}
+.single-iot-services h3 {
+  font-size: 18px;
+  transition: 0.5s;
+  margin-top: 22px;
+  margin-bottom: 17px;
+  line-height: 1.5;
+}
+.single-iot-services .icon {
+  display: inline-block;
+  color: #44ce6f;
+  width: 85px;
+  height: 85px;
+  line-height: 85px;
+  border: 1px solid #e3f7e9;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+.single-iot-services .icon i::before {
+  font-size: 35px;
+}
+.single-iot-services p {
+  margin-bottom: 25px;
+  transition: 0.5s;
+}
+.single-iot-services a {
+  width: 35px;
+  background-color: #f9fafb;
+  height: 35px;
+  line-height: 25px;
+  color: #0e314c;
+  border-radius: 50%;
+}
+.single-iot-services a i, .single-iot-services a .feather {
+  width: 15px;
+  position: relative;
+  top: 4px;
+}
+.single-iot-services:hover::after, .single-iot-services:focus::after {
+  opacity: 1;
+  visibility: visible;
+}
+.single-iot-services:hover h3, .single-iot-services:focus h3 {
+  color: #ffffff;
+}
+.single-iot-services:hover p, .single-iot-services:focus p {
+  color: #ffffff;
+}
+.single-iot-services:hover .icon, .single-iot-services:focus .icon {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.single-iot-services:hover a, .single-iot-services:focus a {
+  background-color: #ffffff;
+  color: #44ce6f;
+}
+
+/*================================================
+IoT CTA CSS
+=================================================*/
+.iot-cta-area {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.cta-iot-content h3 {
+  color: #ffffff;
+  font-size: 25px;
+  margin-bottom: 17px;
+}
+.cta-iot-content p {
+  color: #ffffff;
+  opacity: 0.95;
+  margin-bottom: 25px;
+}
+
+.cta-iot-img {
+  text-align: center;
+}
+
+/*================================================
+IoT Features CSS
+=================================================*/
+.iot-features-content h3 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+.iot-features-content .btn {
+  margin-top: 15px;
+}
+
+.iot-features-image {
+  position: relative;
+  text-align: center;
+}
+
+/*================================================
+IoT Why Choose Us CSS
+=================================================*/
+.iot-why-choose-us {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+}
+.iot-why-choose-us .section-title h2 {
+  color: #ffffff;
+}
+.iot-why-choose-us .section-title .bar::before {
+  background: #ffffff;
+}
+.iot-why-choose-us .section-title p {
+  color: #ffffff;
+  opacity: 0.95;
+}
+.iot-why-choose-us::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 37%;
+  width: 100%;
+  background: #ffffff;
+  z-index: -1;
+}
+
+.single-iot-box {
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px dashed #cdf1d8;
+  padding: 30px;
+  position: relative;
+  z-index: 1;
+  transition: 0.5s;
+}
+.single-iot-box h3 {
+  font-size: 18px;
+  margin-top: 22px;
+  margin-bottom: 17px;
+}
+.single-iot-box p {
+  margin-bottom: 25px;
+}
+.single-iot-box a {
+  width: 40px;
+  background-color: #eef0f3;
+  height: 40px;
+  line-height: 25px;
+  color: #0e314c;
+  border-radius: 50%;
+}
+.single-iot-box a i, .single-iot-box a .feather {
+  width: 18px;
+  position: relative;
+  top: 7px;
+}
+.single-iot-box .icon {
+  display: inline-block;
+  border: 1px solid #f3f8fd;
+  width: 100px;
+  height: 100px;
+  line-height: 96px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+.single-iot-box .icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  bottom: 0;
+  background: #f7fafd;
+  border-radius: 50%;
+  margin: 6px;
+  transition: 0.5s;
+}
+.single-iot-box .icon i::before {
+  font-size: 35px;
+}
+.single-iot-box .icon img {
+  width: 45px;
+}
+.single-iot-box:hover, .single-iot-box:focus {
+  border-color: #44ce6f;
+}
+.single-iot-box:hover a, .single-iot-box:focus a {
+  background-color: #44ce6f;
+  color: #ffffff;
+}/*# sourceMappingURL=iot.css.map */

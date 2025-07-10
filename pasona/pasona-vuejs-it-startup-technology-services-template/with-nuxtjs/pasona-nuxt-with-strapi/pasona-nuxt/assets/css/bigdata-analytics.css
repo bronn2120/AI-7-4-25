@@ -1,0 +1,536 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Big Data Analytics Banner CSS
+** - What We Do CSS
+** - Features CSS
+** - Discover CSS
+** - Industries Serve CSS
+** - Bigdata Services CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*=============================
+Big Data Analytics Banner CSS
+===============================*/
+.bigdata-analytics-banner {
+  background-image: url(../img/bigdata-analytics/main-banner.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 280px;
+  padding-bottom: 25px;
+}
+
+.bigdata-analytics-content {
+  max-width: 555px;
+}
+.bigdata-analytics-content h1 {
+  color: #ffffff;
+  margin-bottom: 25px;
+  line-height: 1.4;
+  font-size: 50px;
+  font-weight: 700;
+}
+.bigdata-analytics-content p {
+  color: #e9e9e9;
+  max-width: 470px;
+  font-size: 15px;
+}
+.bigdata-analytics-content .btn {
+  margin-top: 18px;
+}
+
+.banner-boxes-area {
+  margin-top: 230px;
+}
+
+.single-banner-boxes {
+  margin-bottom: 30px;
+  border: 1px dashed #687b6f;
+  position: relative;
+  border-radius: 5px;
+  padding: 25px 25px 25px 95px;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+  z-index: 1;
+}
+.single-banner-boxes::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+  z-index: -1;
+  opacity: 0;
+  margin: -1px;
+  visibility: hidden;
+  transition: 0.5s;
+}
+.single-banner-boxes .icon {
+  display: inline-block;
+  text-align: center;
+  width: 55px;
+  height: 55px;
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  line-height: 55px;
+  background: #cdf1d8;
+  border-radius: 50%;
+  color: #44ce6f;
+  transition: 0.5s;
+}
+.single-banner-boxes h3 {
+  color: #ffffff;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.single-banner-boxes p {
+  color: #dadada;
+  transition: 0.5s;
+}
+.single-banner-boxes:hover {
+  background-color: transparent;
+  border-color: transparent;
+}
+.single-banner-boxes:hover .icon {
+  color: #44ce6f;
+  background-color: #ffffff;
+}
+.single-banner-boxes:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.single-banner-boxes:hover p {
+  color: #ffffff;
+}
+
+.col-lg-4:nth-child(2) .single-banner-boxes .icon {
+  color: #f78acb;
+  background: #f9f4f7;
+}
+.col-lg-4:nth-child(2) .single-banner-boxes:hover .icon {
+  background-color: #ffffff;
+  color: #f78acb;
+}
+.col-lg-4:nth-child(3) .single-banner-boxes .icon {
+  color: #c679e3;
+  background: #edc3fc;
+}
+.col-lg-4:nth-child(3) .single-banner-boxes:hover .icon {
+  background-color: #ffffff;
+  color: #c679e3;
+}
+
+/*=============================
+What We Do CSS
+===============================*/
+.what-we-do-area {
+  padding-bottom: 50px;
+}
+
+.single-what-we-do-box {
+  margin-bottom: 30px;
+  position: relative;
+  padding-left: 88px;
+}
+.single-what-we-do-box .icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 65px;
+  height: 65px;
+  border-radius: 5px;
+  color: #ffffff;
+  text-align: center;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+}
+.single-what-we-do-box .icon i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40%;
+  transform: translateY(-40%);
+}
+.single-what-we-do-box .icon i::before {
+  font-size: 40px;
+}
+.single-what-we-do-box h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.single-what-we-do-box .link {
+  display: block;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+.single-what-we-do-box .read-more-btn {
+  display: inline-block;
+  font-weight: 600;
+  padding-top: 10px;
+  padding-left: -4px;
+}
+.single-what-we-do-box .read-more-btn svg {
+  margin-right: 5px;
+}
+.single-what-we-do-box .read-more-btn i {
+  position: relative;
+  top: 6px;
+}
+
+/*=============================
+Discover CSS
+===============================*/
+.discover-area {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, #43e794 0%, #23bdb8 100%);
+}
+
+.discover-image {
+  position: relative;
+  padding-bottom: 100px;
+  margin-right: 15px;
+}
+.discover-image img:nth-child(2) {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.discover-content {
+  padding-left: 15px;
+}
+.discover-content h2 {
+  color: #ffffff;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  font-size: 28px;
+  font-weight: 600;
+}
+.discover-content p {
+  color: #ffffff;
+}
+.discover-content .btn-primary {
+  box-shadow: unset !important;
+  margin-top: 15px;
+  background-color: #ffffff;
+  color: #0e314c;
+}
+.discover-content .btn-primary:hover {
+  color: #ffffff;
+}
+
+.analytics-shape1 {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.analytics-shape2 {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+/*================================================
+Industries Serve CSS
+=================================================*/
+.industries-serve-area {
+  padding-bottom: 50px;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, #43e794 0%, #23bdb8 100%);
+}
+.industries-serve-area .section-title h2 {
+  color: #ffffff;
+}
+.industries-serve-area .section-title p {
+  color: #ffffff;
+}
+.industries-serve-area .section-title .bar::before {
+  background: #ffffff;
+}
+
+.single-industries-serve-box {
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  color: #0e314c;
+  border-radius: 5px;
+  background-color: #f4f4fb;
+  padding: 20px 15px 20px 50px;
+  transition: 0.5s;
+  z-index: 1;
+  font-size: 18px;
+  font-weight: 600;
+}
+.single-industries-serve-box .icon {
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  line-height: 1;
+  transform: translateY(-50%);
+  color: #c3c3c9;
+  transition: 0.5s;
+  font-size: 55px;
+  font-weight: normal;
+}
+.single-industries-serve-box::before {
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  content: "";
+  z-index: -1;
+  transition: 0.5s;
+  background-color: #0e314c;
+}
+.single-industries-serve-box .link-btn {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+  z-index: 2;
+}
+.single-industries-serve-box:hover {
+  color: #ffffff;
+}
+.single-industries-serve-box:hover .icon {
+  color: #ffffff;
+}
+.single-industries-serve-box:hover::before {
+  width: 100%;
+}
+
+/*=============================
+Bigdata Services CSS
+===============================*/
+.single-services-box-item {
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.5s;
+  padding: 90px 35px 70px;
+  -webkit-clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
+  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0% 100%);
+}
+.single-services-box-item .icon {
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  position: relative;
+  background-color: #80c54d;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.single-services-box-item .icon img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+}
+.single-services-box-item h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.single-services-box-item h3 a {
+  display: inline-block;
+}
+.single-services-box-item .shape {
+  position: absolute;
+  right: 0;
+  top: -15px;
+  z-index: -1;
+}
+.single-services-box-item .learn-more-btn {
+  color: #44ce6f;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 5px;
+  position: relative;
+  padding-left: 28px;
+}
+.single-services-box-item .learn-more-btn svg {
+  position: absolute;
+  left: 0;
+  top: -2px;
+  transition: 0.5s;
+}
+.single-services-box-item .learn-more-btn:hover {
+  color: #0e314c;
+  padding-left: 0;
+  padding-right: 5px;
+}
+.single-services-box-item .learn-more-btn:hover svg {
+  left: 100%;
+  color: #44ce6f;
+}
+.single-services-box-item:hover {
+  transform: translateY(-10px);
+}
+
+.col-lg-4:nth-child(2) .single-services-box-item .icon {
+  background-color: #4267d1;
+}
+.col-lg-4:nth-child(3) .single-services-box-item .icon {
+  background-color: #ca8220;
+}
+.col-lg-4:nth-child(4) .single-services-box-item .icon {
+  background-color: #b92fb1;
+}
+.col-lg-4:nth-child(5) .single-services-box-item .icon {
+  background-color: #de6742;
+}
+.col-lg-4:nth-child(6) .single-services-box-item .icon {
+  background-color: #59eed0;
+}
+
+/*================================================
+Newsletter CSS
+=================================================*/
+.newsletter-area {
+  position: relative;
+  z-index: 1;
+}
+.newsletter-area .container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+.newsletter-area .container-fluid .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.newsletter-area .container-fluid .row .col-lg-6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.newsletter-area::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 65%;
+  height: 100%;
+  bottom: 0;
+  z-index: 1;
+  -webkit-clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+  background: linear-gradient(135deg, #43e794 0%, #23bdb8 100%);
+}
+
+.newsletter-image img {
+  width: 100%;
+}
+
+.newsletter-content {
+  position: relative;
+  z-index: 2;
+  max-width: 540px;
+}
+.newsletter-content h2 {
+  color: #ffffff;
+  margin-bottom: 0;
+  line-height: 1.5;
+  font-size: 28px;
+  font-weight: 600;
+}
+.newsletter-content .newsletter-form {
+  position: relative;
+  padding-right: 160px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+.newsletter-content .newsletter-form .input-newsletter {
+  display: block;
+  width: 100%;
+  height: 50px;
+  color: #ffffff;
+  border: none;
+  outline: 0;
+  background-color: #333333;
+  border-radius: 30px;
+  padding-left: 20px;
+  padding-top: 2px;
+}
+.newsletter-content .newsletter-form .input-newsletter::-moz-placeholder {
+  -moz-transition: 0.5s;
+  transition: 0.5s;
+  color: #ffffff;
+}
+.newsletter-content .newsletter-form .input-newsletter::placeholder {
+  transition: 0.5s;
+  color: #ffffff;
+}
+.newsletter-content .newsletter-form .input-newsletter:focus::-moz-placeholder {
+  color: transparent;
+}
+.newsletter-content .newsletter-form .input-newsletter:focus::placeholder {
+  color: transparent;
+}
+.newsletter-content .newsletter-form button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 50px;
+  border: none;
+  padding: 0 30px;
+  line-height: 50px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  transition: 0.5s;
+  color: #0e314c;
+  font-size: 14px;
+  font-weight: 600;
+}
+.newsletter-content .newsletter-form button:hover {
+  background-color: #0e314c;
+  color: #ffffff;
+}
+.newsletter-content p {
+  color: #ffffff;
+  max-width: 400px;
+}
+.newsletter-content::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+  display: none;
+}/*# sourceMappingURL=bigdata-analytics.css.map */

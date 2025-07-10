@@ -1,0 +1,52 @@
+{
+  "kind": "singleType",
+  "collectionName": "funfacts",
+  "info": {
+    "singularName": "funfact",
+    "pluralName": "funfacts",
+    "displayName": "Funfact",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true,
+      "default": "We Always Try To Understand Users Expectation"
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    "funfactItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "funfacts-items.funfacts-item",
+      "required": true
+    },
+    "ctaTitle": {
+      "type": "string",
+      "required": true,
+      "default": "Have any question about us?"
+    },
+    "ctaShortDesc": {
+      "type": "string",
+      "required": true,
+      "default": "Don't hesitate to contact us"
+    },
+    "btnText": {
+      "type": "string",
+      "required": true,
+      "default": "Contact Us"
+    },
+    "btnLink": {
+      "type": "string",
+      "required": true,
+      "default": "/contact"
+    }
+  }
+}

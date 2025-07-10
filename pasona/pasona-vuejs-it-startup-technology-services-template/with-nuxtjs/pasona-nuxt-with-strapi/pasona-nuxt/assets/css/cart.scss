@@ -1,0 +1,222 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Cart CSS
+*/
+
+/*================================================
+Default CSS
+=================================================*/
+$font-family: 'Poppins', sans-serif;
+$light-green-color: #44ce6f;
+$white-color: #ffffff;
+$black-color: #0e314c;
+$navlink-color: #4a6f8a;
+$paragraph-color: #6084a4;
+$purple-color: #c679e3;
+$bg-color: #f7fafd;
+$bg-color2: #f9f6f6;
+$hosting-main-color: #032b8d;
+$gradient-color: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+$gradient-color2: linear-gradient(to right bottom, #1fa2ff, #00c0ff, #00d9f2, #53eedd, #a6ffcb);
+$transition: .5s;
+$font-size: 14px;
+
+/*================================================
+Cart CSS
+=================================================*/
+.cart-table {
+    table {
+        margin-bottom: 0;
+
+        thead {
+            tr {
+                border-top: none;
+                border-color: #eaedff;
+                th {
+                    border-bottom-width: 0px;
+                    vertical-align: middle;
+                    font-weight: 500;
+                    padding: 15px 0;
+                    font-size: 15px;
+                    border: none;
+                }
+            }
+        }
+        tbody {
+            tr {
+                border-color: #eaedff;
+                td {
+                    vertical-align: middle;
+                    color: $paragraph-color;
+                    padding: {
+                        left: 0;
+                        right: 0;
+                    }
+                    border: {
+                        color: #eaedff;
+                        left: none;
+                        right: none;
+                    }
+                    &.product-thumbnail {
+                        a {
+                            display: block;
+
+                            img {
+                                width: 80px;
+                            }
+                        }
+                    }
+                    &.product-name {
+                        a {
+                            color: $paragraph-color;
+                            font-weight: 500;
+                            display: inline-block;
+
+                            &:hover {
+                                color: $light-green-color;
+                            }
+                        }
+                    }
+                    &.product-subtotal {
+                        .remove {
+                            color: red;
+                            margin-left: 25px;
+                            position: relative;
+                            top: -1px;
+                            float: right;
+
+                            svg {
+                                width: 19px;
+                            }
+                        }
+                    }
+                    &.product-quantity {
+                        .input-counter {
+                            max-width: 110px;
+                            min-width: 110px;
+                            text-align: center;
+                            display: inline-block;
+                            position: relative;
+                            padding: 10px;
+                            border: 1px solid #eee;
+                
+                            span {
+                                position: absolute;
+                                top: 0;
+                                background-color: transparent;
+                                cursor: pointer;
+                                color: $paragraph-color;
+                                width: 40px;
+                                height: 100%;
+                                line-height: 40px;
+                                transition: $transition;
+                
+                                &.minus-btn {
+                                    left: 0;
+                                }
+                                &.plus-btn {
+                                    right: 0;
+                                }
+                                svg {
+                                    width: 20px;
+                                }
+                                &:hover {
+                                    color: $light-green-color;
+                                }
+                            }
+                            input {
+                                height: 45px;
+                                color: $black-color;
+                                outline: 0;
+                                display: block;
+                                border: none;
+                                background-color: #f8f8f8;
+                                text-align: center;
+                                width: 100%;
+                                font: {
+                                    size: 17px;
+                                    weight: 500;
+                                }
+                                &::placeholder {
+                                    color: $black-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.cart-buttons {
+    margin-top: 30px;
+
+    .btn-light {
+        background-color: #eaedff;
+        
+        &:hover, &:focus {
+            color: $white-color;
+
+            &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle {
+                color: $white-color;
+            }
+        }
+        &:focus {
+            color: $white-color;
+        }
+    }
+}
+.cart-totals {
+    background: $white-color;
+    padding: 40px;
+    max-width: 600px;
+    box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+    margin-left: auto;
+
+    h3 {
+        font: {
+            size: 18px;
+        }
+        margin-bottom: 25px;
+    }
+    ul {
+        padding: 0;
+        margin: 0 0 25px;
+        list-style-type: none;
+        
+        li {
+            border: 1px solid #eaedff;
+            padding: 10px 15px;
+            color: $black-color;
+            overflow: hidden;
+            
+            &:first-child {
+                border: {
+                    bottom: none;
+                }
+            }
+            &:last-child {
+                border: {
+                    top: none;
+                }
+            }
+            span {
+                float: right;
+                color: $paragraph-color;
+            }
+        }
+    }
+}

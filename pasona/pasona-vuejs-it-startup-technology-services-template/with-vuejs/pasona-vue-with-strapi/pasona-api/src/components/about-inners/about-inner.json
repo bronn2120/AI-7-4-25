@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_about_inners_about_inners",
+  "info": {
+    "displayName": "about-inner",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "desc": {
+      "type": "string",
+      "required": true,
+      "default": "Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram."
+    }
+  }
+}

@@ -1,0 +1,104 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Project Details CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Project Details CSS
+=================================================*/
+.project-details-image {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.project-details-image::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #0e314c;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s;
+}
+.project-details-image a {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  color: #ffffff;
+  margin-top: 0;
+  opacity: 0;
+  visibility: hidden;
+  margin-top: 25px;
+}
+.project-details-image a:hover {
+  color: #44ce6f;
+}
+.project-details-image:hover::before {
+  opacity: 0.9;
+  visibility: visible;
+}
+.project-details-image:hover a {
+  opacity: 1;
+  visibility: visible;
+  margin-top: -5px;
+}
+
+.project-details-desc h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.project-details-desc .project-details-information {
+  overflow: hidden;
+}
+.project-details-desc .project-details-information .single-info-box {
+  float: left;
+  width: 20%;
+  margin-top: 30px;
+}
+.project-details-desc .project-details-information .single-info-box h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.project-details-desc .project-details-information .single-info-box p {
+  margin-bottom: 0;
+}
+.project-details-desc .project-details-information .single-info-box ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.project-details-desc .project-details-information .single-info-box ul li {
+  display: inline-block;
+}
+.project-details-desc .project-details-information .single-info-box ul li a {
+  margin-right: 7px;
+  color: #6084a4;
+}
+.project-details-desc .project-details-information .single-info-box ul li a svg {
+  width: 18px;
+}
+.project-details-desc .project-details-information .single-info-box ul li a:hover {
+  color: #44ce6f;
+  transform: translateY(-5px);
+}/*# sourceMappingURL=project-details.css.map */

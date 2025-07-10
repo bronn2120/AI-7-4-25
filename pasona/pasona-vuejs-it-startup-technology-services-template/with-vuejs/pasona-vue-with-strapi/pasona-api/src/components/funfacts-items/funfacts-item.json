@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_funfacts_items_funfacts_items",
+  "info": {
+    "displayName": "funfacts-item",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

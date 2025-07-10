@@ -1,0 +1,119 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Main Banner CSS
+** - Boxes CSS
+** - Features CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Main Banner CSS
+=================================================*/
+.main-banner {
+  position: relative;
+  height: 910px;
+  z-index: 1;
+  background: transparent url(../img/banner-bg1.jpg) right top no-repeat;
+}
+.main-banner .hero-content h1 {
+  font-size: 45px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.main-banner .hero-content p {
+  margin-bottom: 30px;
+}
+.main-banner .banner-image {
+  position: relative;
+}
+.main-banner .banner-image img {
+  position: absolute;
+}
+.main-banner .banner-image img:nth-child(1) {
+  z-index: 3;
+  top: -130px;
+  left: -45px;
+}
+.main-banner .banner-image img:nth-child(2) {
+  right: 145px;
+  top: -287px;
+}
+.main-banner .banner-image img:nth-child(3) {
+  left: 25px;
+  top: -20px;
+}
+.main-banner .banner-image img:nth-child(4) {
+  right: 12%;
+  top: 118px;
+  z-index: 1;
+}
+.main-banner .banner-image img:nth-child(5) {
+  left: 28%;
+  top: -120px;
+  z-index: 2;
+}
+.main-banner .banner-image img:nth-child(6) {
+  right: 35%;
+  z-index: 1;
+  top: -150px;
+}
+.main-banner .banner-image img:nth-child(7) {
+  right: 20px;
+  top: -110px;
+}
+.main-banner .banner-image img:nth-child(8) {
+  right: 25px;
+  top: -140px;
+}
+.main-banner .banner-image img:nth-child(9) {
+  right: 30%;
+  z-index: 1;
+  top: -35px;
+}
+.main-banner .banner-image img:nth-child(10) {
+  left: 37%;
+  top: -28px;
+  z-index: 1;
+}
+.main-banner .banner-image img:nth-child(11) {
+  left: 37%;
+  top: -160px;
+  z-index: 1;
+}
+.main-banner .banner-image img:nth-child(12) {
+  left: 90px;
+  top: -110px;
+}
+.main-banner .banner-image img:nth-child(13) {
+  left: 56%;
+  top: -25px;
+  z-index: 2;
+}
+.main-banner .banner-image img:nth-child(14) {
+  right: 105px;
+  top: -28px;
+}
+.main-banner .banner-image img:last-child {
+  display: none;
+}
+.main-banner .banner-image.single-banner-image img {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}/*# sourceMappingURL=it-startup.css.map */

@@ -1,0 +1,189 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Checkout CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Checkout CSS
+=================================================*/
+.user-actions {
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  padding: 18px 25px 15px;
+  margin-bottom: 35px;
+  border-top: 3px solid #44ce6f;
+}
+.user-actions svg {
+  color: #44ce6f;
+  margin-right: 4px;
+  width: 16px;
+}
+.user-actions span {
+  display: inline-block;
+  color: #44ce6f;
+}
+.user-actions span a {
+  font-weight: 500;
+  display: inline-block;
+  color: #0e314c;
+}
+.user-actions span a:hover, .user-actions span a:focus {
+  color: #44ce6f;
+}
+
+.checkout-area .title {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.billing-details {
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 5px;
+}
+.billing-details .form-group label {
+  display: block;
+  color: #6084a4;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.billing-details .form-group label .required {
+  color: red;
+}
+.billing-details .form-group .form-control {
+  background: transparent;
+}
+.billing-details .form-group select {
+  cursor: pointer;
+  height: 45px;
+  padding: 10px;
+  font-size: 14px;
+  color: #0e314c;
+  border: 1px solid #eeeeee;
+  border-radius: 0;
+  transition: 0.5s;
+  box-shadow: none;
+}
+.billing-details .form-check {
+  margin-bottom: 15px;
+}
+.billing-details .form-check .form-check-label {
+  color: #6084a4;
+}
+.billing-details .form-check label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.order-details {
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 5px;
+}
+.order-details .order-table table {
+  margin-bottom: 0;
+  text-align: left;
+}
+.order-details .order-table table thead tr {
+  border-color: #eaedff;
+}
+.order-details .order-table table thead tr th {
+  border-bottom-width: 0px;
+  vertical-align: middle;
+  font-weight: 500;
+  border-color: #eaedff;
+  padding: 15px 20px;
+}
+.order-details .order-table table tbody tr {
+  border-color: #eaedff;
+}
+.order-details .order-table table tbody tr td {
+  vertical-align: middle;
+  color: #6084a4;
+  border-color: #eaedff;
+  font-size: 14px;
+}
+.order-details .order-table table tbody tr td.product-name a {
+  color: #6084a4;
+  display: inline-block;
+}
+.order-details .order-table table tbody tr td.product-name a:hover {
+  color: #44ce6f;
+}
+.order-details .order-table table tbody tr td.order-subtotal span, .order-details .order-table table tbody tr td.order-shipping span, .order-details .order-table table tbody tr td.total-price span {
+  color: #0e314c;
+  font-weight: 500;
+}
+.order-details .payment-method {
+  margin-top: 40px;
+  border-top: 1px solid #eaedff;
+  padding-top: 35px;
+}
+.order-details .payment-method p {
+  font-size: 14px;
+}
+.order-details .payment-method p [type=radio]:checked, .order-details .payment-method p [type=radio]:not(:checked) {
+  display: none;
+}
+.order-details .payment-method p [type=radio]:checked + label, .order-details .payment-method p [type=radio]:not(:checked) + label {
+  padding-left: 27px;
+  cursor: pointer;
+  display: block;
+  color: #0e314c;
+  position: relative;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.order-details .payment-method p [type=radio]:checked + label::before, .order-details .payment-method p [type=radio]:not(:checked) + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  background: #ffffff;
+}
+.order-details .payment-method p [type=radio]:checked + label::after, .order-details .payment-method p [type=radio]:not(:checked) + label::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #44ce6f;
+  position: absolute;
+  top: 7px;
+  left: 3px;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+.order-details .payment-method p [type=radio]:not(:checked) + label::after {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0);
+}
+.order-details .payment-method p [type=radio]:checked + label::after {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.order-details .btn.order-btn {
+  display: block;
+  margin-top: 25px;
+}/*# sourceMappingURL=checkout.css.map */

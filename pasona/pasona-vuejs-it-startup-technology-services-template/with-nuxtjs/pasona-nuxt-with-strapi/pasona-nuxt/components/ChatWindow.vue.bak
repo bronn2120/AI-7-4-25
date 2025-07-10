@@ -1,0 +1,92 @@
+<template>
+  <div class="chat">
+    <h2>CometChat</h2>
+    <div class="messages">
+      <p v-for="message in messages" :key="message.id">
+        {{ message.sender.uid }}: {{ message.text }}
+      </p>
+    </div>
+    <input
+      v-model="newMessage"
+      @keyup.enter="sendMessage"
+      placeholder="Type a message..."
+      class="message-input"
+    />
+  </div>
+</template>
+
+<script>
+import { CometChat } from '@cometchat-pro/chat';
+
+export default {
+  name: 'ChatWindow',
+  data() {
+    return {
+      messages: [],
+      newMessage: ''
+    };
+  },
+  mounted() {
+    // Initialize message listener
+    CometChat.addMessageListener(
+      'chatListener',
+      new CometChat.MessageListener({
+        onTextMessageReceived: (message) => {
+          this.messages.push({
+            id: message.id,
+            sender: message.sender,
+            text: message.text
+          });
+        }
+      })
+    );
+  },
+  beforeDestroy() {
+    // Clean up listener
+    CometChat.removeMessageListener('chatListener');
+  },
+  methods: {
+    sendMessage() {
+      if (!this.newMessage.trim()) return;
+      const receiverID = 'cometchat-uid-2'; // Test user to send to
+      const message = new CometChat.TextMessage(
+        receiverID,
+        this.newMessage,
+        CometChat.RECEIVER_TYPE.USER
+      );
+      CometChat.sendMessage(message).then(
+        (sentMessage) => {
+          this.messages.push({
+            id: sentMessage.id,
+            sender: { uid: 'cometchat-uid-1' },
+            text: sentMessage.text
+          });
+          this.newMessage = '';
+        },
+        (error) => {
+          console.error('Message sending failed:', error);
+        }
+      );
+    }
+  }
+};
+</script>
+
+<style scoped>
+.chat {
+  width: 800px;
+  margin: 20px auto;
+}
+.messages {
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.message-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+}
+</style>

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_feature_items_feature_items",
+  "info": {
+    "displayName": "feature-item",
+    "icon": "arrowRight",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "default": "Lorem ipsum dolor amet, adipiscing, sed do eiusmod tempor incididunt ut labore dolore magna aliqua."
+    },
+    "bgClass": {
+      "type": "string"
+    }
+  }
+}

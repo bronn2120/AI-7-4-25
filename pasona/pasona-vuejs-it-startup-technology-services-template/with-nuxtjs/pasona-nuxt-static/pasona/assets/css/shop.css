@@ -1,0 +1,227 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Shop CSS
+*/
+/*================================================
+Default CSS
+=================================================*/
+/*================================================
+Shop CSS
+=================================================*/
+.woocommerce-topbar {
+  background-color: #fcfbfb;
+  padding: 10px 40px;
+  margin-bottom: 30px;
+}
+.woocommerce-topbar .woocommerce-topbar-ordering .form-select {
+  cursor: pointer;
+  border-color: #ebebeb;
+  font-size: 14px;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.single-products {
+  text-align: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+.single-products .products-content {
+  margin-top: 20px;
+}
+.single-products .products-content h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.single-products .products-content ul {
+  padding: 0;
+  margin: 10px 0 12px;
+  list-style-type: none;
+}
+.single-products .products-content ul li {
+  display: inline-block;
+  color: #eac11d;
+}
+.single-products .products-content ul li i::before {
+  font-size: 15px;
+}
+.single-products .products-content .add-to-cart-btn {
+  display: block;
+  width: 100%;
+  color: #0e314c;
+  border: 1px solid #0e314c;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.single-products .sale-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ff2d2d;
+  color: #fff;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  border-radius: 50%;
+  z-index: 2;
+}
+.single-products .products-image {
+  overflow: hidden;
+  position: relative;
+}
+.single-products .products-image a {
+  width: 100%;
+}
+.single-products .products-image a img {
+  transition: all 1.5s ease-out;
+  width: 100%;
+}
+.single-products:hover .products-content .add-to-cart-btn, .single-products:focus .products-content .add-to-cart-btn {
+  background-color: #0e314c;
+  color: #ffffff;
+}
+.single-products:hover .products-image img, .single-products:focus .products-image img {
+  transform: scale(1.1);
+}
+
+#productsModalCenter .modal-dialog {
+  max-width: 900px;
+}
+#productsModalCenter .modal-content {
+  border: none;
+  border-radius: 0;
+}
+#productsModalCenter .modal-content button.close {
+  position: absolute;
+  right: 2%;
+  display: inline-block;
+  opacity: 1;
+  top: 2%;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  line-height: 32px;
+  border: 1px solid #eeeeee;
+  border-radius: 50%;
+  outline: 0;
+  transition: 0.5s;
+}
+#productsModalCenter .modal-content button.close span {
+  transition: 0.5s;
+}
+#productsModalCenter .modal-content button.close:hover, #productsModalCenter .modal-content button.close:focus {
+  background-color: #44ce6f;
+  color: #ffffff;
+}
+#productsModalCenter .modal-content button.close:hover span, #productsModalCenter .modal-content button.close:focus span {
+  color: #ffffff;
+}
+#productsModalCenter .modal-content .products-image {
+  overflow: hidden;
+}
+#productsModalCenter .modal-content .products-image img {
+  width: 100%;
+}
+#productsModalCenter .modal-content .products-content p {
+  margin-bottom: 20px;
+}
+#productsModalCenter .modal-content .products-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+#productsModalCenter .modal-content .products-content .price {
+  margin-bottom: 15px;
+}
+#productsModalCenter .modal-content .products-content .price span {
+  text-decoration: line-through;
+  color: #6084a4;
+}
+#productsModalCenter .modal-content .products-content form .quantity {
+  display: inline-block;
+  margin-right: 8px;
+}
+#productsModalCenter .modal-content .products-content form .quantity .input-counter {
+  max-width: 110px;
+  min-width: 110px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+}
+#productsModalCenter .modal-content .products-content form .quantity .input-counter span {
+  position: absolute;
+  top: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: #6084a4;
+  width: 40px;
+  height: 100%;
+  line-height: 47px;
+  transition: 0.5s;
+  padding: 0;
+}
+#productsModalCenter .modal-content .products-content form .quantity .input-counter span.minus-btn {
+  left: 0;
+}
+#productsModalCenter .modal-content .products-content form .quantity .input-counter span.plus-btn {
+  right: 0;
+}
+#productsModalCenter .modal-content .products-content form .quantity .input-counter span svg {
+  width: 20px;
+}
+#productsModalCenter .modal-content .products-content form .quantity .input-counter span:hover {
+  color: #44ce6f;
+}
+#productsModalCenter .modal-content .products-content form .quantity .input-counter input {
+  height: 47px;
+  color: #0e314c;
+  outline: 0;
+  display: block;
+  border: none;
+  background-color: #f8f8f8;
+  text-align: center;
+  width: 100%;
+  font-size: 17px;
+  font-weight: 500;
+}
+#productsModalCenter .modal-content .products-content form .quantity .input-counter input::-moz-placeholder {
+  color: #0e314c;
+}
+#productsModalCenter .modal-content .products-content form .quantity .input-counter input::placeholder {
+  color: #0e314c;
+}
+#productsModalCenter .modal-content .products-content form button {
+  background: #44ce6f;
+  color: #ffffff;
+  border: none;
+  height: 46px;
+  padding: 0 20px;
+  position: relative;
+  top: -2px;
+  cursor: pointer;
+  outline: 0;
+  transition: 0.5s;
+}
+#productsModalCenter .modal-content .products-content form button:hover, #productsModalCenter .modal-content .products-content form button:focus {
+  background-color: #c679e3;
+  color: #ffffff;
+}
+#productsModalCenter .modal-content .products-content .product-meta {
+  margin-top: 15px;
+}
+#productsModalCenter .modal-content .products-content .product-meta span {
+  display: inline-block;
+  margin-right: 8px;
+}/*# sourceMappingURL=shop.css.map */

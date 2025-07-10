@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pasona - IT Startup & Technology Services Template with Nuxtjs & Strapi 4</title>
+        <link href="css/collection.css" rel="stylesheet">
+        <link href="css/custom.css" rel="stylesheet">
+		<link rel="icon" type="image/png" href="image/favicon.png">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400" rel="stylesheet" type="text/css">
+        <script src="js/other.js"></script>
+        <script src="js/custom.js"></script>
+    </head>
+
+    <body data-spy="scroll" data-target=".sidebar" data-offset="200">
+        <aside class="sidebar sidebar-boxed sidebar-dark">  
+            <ul class="nav sidenav dropable">
+                <li><a href="#introduction" title="Introduction">Introduction</a></li>
+                <li><a href="#getting_started" title="Setup Development Envrionment">Development Environment Setup</a></li>
+                <li><a href="#documenter_cover">Pages Info</a></li>
+                <li><a href="#dependencies" title="Dependencies">Dependencies</a></li>
+                <li><a href="#supports" title="Support">Support</a></li>
+            </ul>
+        </aside>
+
+        <header class="site-header navbar-transparent"> 
+            <div class="banner auto-size" style="background-color: #455aa2">
+                <div class="container-fluid">
+                    <h1><strong>Pasona - Nuxt.js with Strapi</strong>  Documentation</h1>
+                </div>
+            </div>
+        </header>
+
+        <main class="container-fluid"> 
+            <article class="main-content" role="main">
+                <section id="introduction">
+                    <div class="page-header">
+                        <h3>Introduction</h3>
+                    </div>
+                    <p><strong>Pasona</strong> - IT Startup & Technology Services Template with Nuxt.js & Strapi 4</p>
+                </section>
+
+                <section id="getting_started">
+                    <div class="page-header">
+                        <h3>Local Development Environment Setup</h3>
+                    </div>
+                    <p>
+                        In order to kickstart the development of your web app with <strong>Pasona</strong>, the very first thing is to setup an <b>Nuxt.js with Strapi</b> development environment.
+                    </p>
+
+                    <h6>Node.js & npm</h6>
+                    <ul>
+                        <li>Download Node.js from <a rel="noreferrer noopener" href="https://nodejs.org/en/download/" target="_blank">https://nodejs.org/en/download/ </a>and install it on your system. NPM comes bundled with Node.js</li>
+                        <li>Now check the version if everything is installed nicely like open the <code>terminal/bash/command prompt</code> and run <code>node -v</code> <code>npm -v</code> if you get any number then everything is just fine.
+                        </li>
+                    </ul>
+
+                    <p>
+                        Open the terminal and run the command <code>npm install -g @vue/cli</code>. To get more help on the <code class="language-murkup">Nuxt.js CLI</code> check out the <a target="_blank" href="https://cli.vuejs.org/guide/installation.html/">Vue.js CLI Guide</a>.
+                    </p>
+
+                    <div class="page-header">
+                        <h3>Strapi</h3>
+                    </div>
+
+                    <ul>
+                        <h5>Introduction from <a target="_blank" href="https://strapi.io/" target="_blank">Strapi</a> official doc</h5>
+                        <li>
+                            The original purpose of the project was to help Bootstrap your API: that's how Strapi was created. Now, Strapi is an open-source headless CMS that gives developers the freedom to choose their favorite tools and frameworks and allows editors to manage and distribute their content using their application's admin panel. Based on a plugin system, Strapi is a flexible CMS whose admin panel and API are extensible - and which every part is customizable to match any use case. Strapi also has a built-in user system to manage in detail what the administrators and end-users have access to.
+                        </li>
+                        <li>If you want to more comfortable with <a target="_blank" href="https://docs.strapi.io/dev-docs/integrations/nuxt-js" target="_blank">Nuxt.js With Strapi</a></li>
+                    </ul>
+					
+                    <div class="page-header">
+                        <h4>NPM Packages</h4>
+                    </div>
+                    <ul>
+                        <li>Before proceding you'll need to install npm packages. You can do this by running <code class="language-markup">npm install</code> from the root of your project to install all the necessary dependencies.</li>
+                    </ul>
+
+                    <div>
+                        <p>1. Open the <code>pasona-nuxt-with-strapi/pasona-api</code> and run the command <code>npm install</code> then update the config/plugin.js file as the cloudinary credentials.</p>
+
+                        <p>Go to <a target="_blank" href="https://cloudinary.com/">Cloudinary</a> and create an account. Following by screenshot update your cloudinary credentials here</p>
+                        <img src="./image/cloudinary.png" alt="Image">
+                    </div>
+             
+                    <div>
+                        <p>2. Download and install <a rel="noreferrer noopener" href="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads" target="_blank">PostgreSQL</a> with pgAdmin.</p>
+
+                        <p>- Then update as your credentials file path config/database.js</p>
+
+                        <img src="./image/postgres.png" alt="Image">
+
+                        <p>- Create database as named <b>pasona-api</b> and restore the <b>pasona-api-data</b> from downloaded bundle.</p>
+                        <img src="./image/api-data.png" alt="Image">
+                    </div>
+
+                    <div>
+                        <p>3. Run the command <code>npm run develop</code></p>
+
+                        <p>4. Go To <a href="localhost:1337/" target="_blank">localhost:1337</a></p>
+
+                        <p>5. Login by the credential <strong>Email:</strong> <code>hello@pasona.com</code>  <strong>Password:</strong><code>Pasona1EnvyTheme</code></p>
+
+                        <p>6. Done</p>
+                    </div>
+
+                    <div class="page-header">
+                        <h4>Frontend version</h4>
+                    </div>
+                    <div>
+                        <p>1. Open the <code>koze-nuxt-with-strapi/pasona-nuxt</code> and run the command <code>npm install</code></p>
+                        <p>2. <code>npm run dev</code></p>
+                        <p>3. Go to <a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a></p>
+                        <p>4. Run <code>npm run build</code> to build the project.</p>
+                        <p>5. Done</p>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="page-header">
+                        <p>
+                            <b>Still confused? Don’t worry! Check the installation and configuration Video Tutorial</b>
+                        </p>
+                        <p>
+                            <span>Please follow the referenced video to get the install and setup process it will guide you to do that.
+                            </span>
+                            
+                            <a href="https://www.youtube.com/watch?v=cQfUBhA1XKo" target="_blank">
+                                https://www.youtube.com/watch?v=cQfUBhA1XKo
+                            </a>
+                        </p>
+                    </div>
+                </section>
+
+                <section id="documenter_cover">
+                    <div class="page-header">
+                        <h3>Pages Info</h3>
+                    </div>
+                    
+                    <ul>
+                        <li><b>All Pages</b></li>
+                        <img src="./image/pages.png" alt="Image">
+						
+						<li><b>Pages Components</b>
+                            <ul>
+                                <li><b>Home Page One</b></li>
+                                <img src="./image/components.png" alt="Image">
+                            </ul>
+                        </li>
+
+                        <li>All Pages components are there & based on the pages name you will find the components folders inside components.</li>
+                    </ul>
+                </section>
+
+                <section id="dependencies">
+                    <div class="page-header">
+                        <h3>Dependencies</h3>
+                    </div>
+                    <p> Here are the <strong>dependencies</strong> list which being used in the Pasona Nuxt.js Strapi Template:</p>
+<pre class="line-numbers">
+<code class="language-markup"> 
+"dependencies": {
+    "@strapi/plugin-cloud": "4.21.1",
+    "@strapi/plugin-i18n": "4.21.1",
+    "@strapi/plugin-users-permissions": "4.21.1",
+    "@strapi/provider-upload-cloudinary": "^4.21.1",
+    "@strapi/strapi": "4.21.1",
+    "pg": "8.8.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "strapi-plugin-populate-deep"
+},
+</code>
+</pre class="brush:css">
+                </section>
+                <section id="supports">
+                    <div class="page-header">
+                        <h3></h3>
+                    </div>
+                    <h2>24-Hour Turnaround Support:</h2>
+                    <ul>
+                        <li>Quick, Dedicated & Professional Support!</li>
+                        <li>We only provide support through our ticketing system. Please submit your ticket by visiting the <a href="https://support.envytheme.com/" target="_new">EnvyTheme Support System</a>. </li>
+                    <li>For any pre-purchase query, please use live chat on the item demo site also, email, and the item’s comment section on ThemeForest. Thanks!</li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container-fluid"> <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <p>Copyright &copy; Pasona. All right reserved</p>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <ul class="footer-menu">
+                            <li><a target="_blank" href="https://support.envytheme.com/" target="_blank">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Blog Details CSS
+*/
+
+/*================================================
+Default CSS
+=================================================*/
+$font-family: 'Poppins', sans-serif;
+$light-green-color: #44ce6f;
+$white-color: #ffffff;
+$black-color: #0e314c;
+$navlink-color: #4a6f8a;
+$paragraph-color: #6084a4;
+$purple-color: #c679e3;
+$bg-color: #f7fafd;
+$bg-color2: #f9f6f6;
+$hosting-main-color: #032b8d;
+$gradient-color: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+$gradient-color2: linear-gradient(to right bottom, #1fa2ff, #00c0ff, #00d9f2, #53eedd, #a6ffcb);
+$transition: .5s;
+$font-size: 14px;
+
+/*================================================
+Contact CSS
+=================================================*/
+.contact-info-box {
+    text-align: center;
+    transition: .4s;
+    box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
+    background: $white-color;
+    padding: 30px;
+
+    .icon {
+        display: inline-block;
+        width: 65px;
+        height: 65px;
+        line-height: 65px;
+        background: $bg-color;
+        border-radius: 50%;
+        font-size: 30px;
+        color: $light-green-color;
+        transition: .4s;
+    }
+    h3 {
+        margin: 25px 0 15px;
+        font: {
+            size: 18px;
+        }
+    }
+    p {
+        margin-bottom: 0;
+
+        a {
+            color: $paragraph-color;
+
+            &:hover {
+                color: $light-green-color;
+            }
+        }
+    }
+    &:hover {
+        transform: translateY(-10px);
+
+        .icon {
+            color: $white-color;
+            background: $light-green-color;
+        }
+    }
+}
+#contactForm {
+    .btn {
+        margin-top: 10px;
+    }
+}

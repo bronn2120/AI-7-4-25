@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_team_items_team_items",
+  "info": {
+    "displayName": "team-item",
+    "icon": "arrowRight",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "designation": {
+      "type": "string",
+      "required": true
+    },
+    "socialLink": {
+      "type": "component",
+      "repeatable": true,
+      "component": "social-links.social-link",
+      "required": true
+    },
+    "shortDesc": {
+      "type": "string",
+      "required": true,
+      "default": "Risus commodo viverra maecenas accumsan lacus vel facilisis quis ipsum."
+    }
+  }
+}

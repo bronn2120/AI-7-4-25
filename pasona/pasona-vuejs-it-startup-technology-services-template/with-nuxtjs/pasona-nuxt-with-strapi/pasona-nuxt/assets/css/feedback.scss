@@ -1,0 +1,793 @@
+/*
+@File: Pasona Template Styles
+
+* This file contains the styling for the actual template, this
+is the file you need to edit to change the look of the
+template.
+
+This files table contents are outlined below>>>>>
+
+*******************************************
+*******************************************
+
+==== INDEX PAGE CSS
+
+** - Feedback CSS
+** - ML Feedback CSS
+** - Testimonials CSS
+** - Agency Feedback Area CSS
+** - Big Data Feedback CSS
+** - Repair Feedback CSS
+*/
+
+/*================================================
+Default CSS
+=================================================*/
+$font-family: 'Poppins', sans-serif;
+$light-green-color: #44ce6f;
+$white-color: #ffffff;
+$black-color: #0e314c;
+$navlink-color: #4a6f8a;
+$paragraph-color: #6084a4;
+$purple-color: #c679e3;
+$bg-color: #f7fafd;
+$bg-color2: #f9f6f6;
+$hosting-main-color: #032b8d;
+$gradient-color: linear-gradient(135deg, #23bdb8 0%, #43e794 100%);
+$gradient-color2: linear-gradient(to right bottom, #1fa2ff, #00c0ff, #00d9f2, #53eedd, #a6ffcb);
+$transition: .5s;
+$font-size: 14px;
+
+/*================================================
+Feedback CSS
+=================================================*/
+.feedback-area {
+    position: relative;
+    z-index: 1;
+}
+.feedback-slides {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+
+    .single-feedback {
+        background: $white-color;
+        border-radius: 5px;
+        position: relative;
+        text-align: left;
+        padding: {
+            left: 170px;
+            right: 40px;
+            top: 40px;
+            bottom: 40px;
+        }
+        .client-img {
+            position: absolute;
+            left: 40px;
+            top: 40px;
+
+            img {
+                border-radius: 50%;
+                border: 2px solid $light-green-color;
+                padding: 3px;
+                width: auto !important;
+                display: inline-block !important;
+            }
+        }
+        h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+        span {
+            display: block;
+            color: $purple-color;
+            margin: {
+                top: 8px;
+                bottom: 18px;
+            }
+        }
+        p {
+            font-size: 15px;
+        }
+        // &::before {
+        //     content: '';
+        //     position: absolute;
+        //     left: 0;
+        //     bottom: -25px;
+        //     width: 50px;
+        //     height: 50px;
+        //     background: $white-color;
+        //     right: 0;
+        //     margin: 0 auto;
+        //     transform: rotate(45deg);
+        // }
+    }
+    .client-thumbnails {
+        position: relative;
+        margin: 0 85px;
+
+        .item {
+            .img-fill {
+                cursor: pointer;
+                position: relative;
+                text-align: center;
+
+                img {
+                    opacity: 0.4;
+                    transition: $transition;
+                    display: inline-block;
+                    position: relative;
+                    border: 2px solid $light-green-color;
+                    border-radius: 50%;
+                    padding: 3px;
+                    width: 85px;
+                }
+            }
+            &:hover {
+                .img-fill {
+                    img {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        .slick-center {
+            .item {
+                .img-fill {
+                    img {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    .carousel {
+        .carousel__prev, .carousel__next {
+            position: absolute;
+            width: 40px;
+            left: -50px;
+            height: 40px;
+            cursor: pointer;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            color: $light-green-color;
+            border: 2px solid $light-green-color;
+            z-index: 1;
+            border-radius: 50%;
+            line-height: 44px;
+            outline: 0 !important;
+            transition: $transition;
+    
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: $gradient-color;
+                opacity: 0;
+                visibility: hidden;
+                transition: $transition;
+                border-radius: 50%;
+            }
+            &:hover {
+                color: $white-color;    
+                &::before {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            svg {
+                width: 18px;
+                height: 18px;
+                position: relative;
+            }
+            &.carousel__next {
+                left: auto;
+                right: -50px;
+            }
+        }
+    }
+}
+.client-thumbnails {
+    .next-arrow, .prev-arrow {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        color: #5e5e5e;
+        border: 2px solid #5e5e5e;
+        z-index: 1;
+        border-radius: 50%;
+        line-height: 35px;
+        outline: 0 !important;
+        transition: $transition;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: $gradient-color;
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+            border-radius: 50%;
+        }
+        &:hover {
+            color: $white-color;
+            border-color: $light-green-color;
+
+            &::before {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        svg {
+            width: 18px;
+            height: 18px;
+            position: relative;
+        }
+    }
+    .next-arrow {
+        right: -20px;
+    }
+    .prev-arrow {
+        left: -20px;
+    }
+}
+.testimonials-slides {
+    background-color: #f7fbfe;
+    max-width: 850px;
+    margin: 90px auto 30px;
+    position: relative;
+    z-index: 1;
+    .single-feedback-item {
+        margin: 0 15px;
+    }
+
+    &::before {
+        position: absolute;
+        left: -30px;
+        top: -30px;
+        width: 260px;
+        height: 260px;
+        content: '';
+        z-index: -1;
+        background-image: url(../img/layer.png);
+    }
+    &::after {
+        position: absolute;
+        right: -30px;
+        bottom: -30px;
+        width: 260px;
+        height: 260px;
+        content: '';
+        z-index: -1;
+        background-image: url(../img/layer.png);
+    }
+    .carousel__pagination {
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        margin-top: 0 !important;
+    }
+}
+.single-feedback-item {
+    padding: 40px 130px 90px;
+    text-align: center;
+    background-color: #f7fbfe;
+    position: relative;
+
+    .client-info {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        text-align: left;
+        max-width: 280px;
+        margin: 0 auto 25px;
+
+        .image {
+            padding-right: 20px;
+
+            img {
+                display: inline-block !important;
+                width: 75px;
+                border-radius: 50%;
+                border: 3px solid $light-green-color;
+            }
+        }
+        .title {
+            h3 {
+                font-size: 18px;
+                margin: 0;
+            }
+            span {
+                display: block;
+                margin-top: 8px;
+                color: $purple-color;
+            }
+        }
+    }
+    p {
+        font-size: 16px;
+        font-style: italic;
+    }
+    &::before {
+        content: "\f11b";
+        color: #d9dcde;
+        font: {
+            family: Flaticon;
+            size: 30px;
+            style: normal;
+            size: 65px;
+        }
+        position: absolute;
+        top: 0;
+        left: 25px;
+    }
+}
+
+/*================================================
+ML Feedback CSS
+=================================================*/
+.ml-feedback-area {
+    background: linear-gradient(to right top, #d5fefd, #e0fdff, #effbff, #fbfaff, #fffcff);
+    position: relative;
+    z-index: 1;
+    padding-bottom: 50px;
+}
+.single-ml-feedback-item {
+    box-shadow: 0 0 25px 3px rgba(0, 0, 0, 0.04);
+    margin-bottom: 45px;
+    background-color: $white-color;
+    position: relative;
+    padding: 60px 70px 60px 190px;
+    border-radius: 5px;
+
+    .client-info {
+        position: absolute;
+        left: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+
+        img {
+            border-radius: 5px;
+            border: 2px solid #f4f5fe;
+            width: 80px !important;
+            height: 80px !important;
+            padding: 5px;
+            display: inline-block !important;
+        }
+        h3 {
+            margin: {
+                bottom: 0;
+                top: 10px;
+            };
+            font: {
+                size: 17px;
+            };
+        }
+        span {
+            display: block;
+            color: $purple-color;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+    }
+    p {
+        margin-bottom: 0;
+        color: #4a6f8a;
+    }
+    .rating {
+        margin-top: 10px;
+
+        i, .feather {
+            color: #ff612f;
+            width: 18px;
+            margin-right: 3px;
+        }
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        border-radius: 5px;
+        bottom: -15px;
+        background-color: $white-color;
+        box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, 0.04);
+        z-index: -1;
+        margin: {
+            left: 30px;
+            right: 30px;
+        };
+    }
+}
+.ml-feedback-slides {
+    max-width: 655px;
+    margin: -40px auto 30px;
+
+    .single-ml-feedback-item {
+        margin-top: 40px;
+        text-align: left;
+    }
+}
+
+/*================================================
+Testimonials CSS
+=================================================*/
+.single-testimonials-item {
+    box-shadow: 0 0 25px 3px rgba(0, 0, 0, 0.04);
+    margin-bottom: 45px;
+    background-color: $white-color;
+    position: relative;
+    padding: 110px 65px 60px;
+    border-radius: 5px;
+    text-align: center;
+
+    p {
+        margin-bottom: 0;
+        color: #4a6f8a;
+        font-size: 15px;
+    }
+    .client-info {
+        text-align: left;
+        position: relative;
+        padding-left: 95px;
+        margin-top: 25px;
+        max-width: 235px;
+        margin: {
+            left: auto;
+            right: auto;
+        };
+        img {
+            border-radius: 5px;
+            border: 2px solid #f4f5fe;
+            width: 80px !important;
+            height: 80px !important;
+            padding: 5px;
+            display: inline-block !important;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .rating {    
+            i {
+                margin-right: 3px;
+                color: #ff612f;
+                width: 16px;
+            }
+        }
+        h3 {
+            margin: {
+                bottom: 0;
+                top: 8px;
+            };
+            font: {
+                size: 17px;
+            };
+        }
+        span {
+            display: block;
+            color: $purple-color;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        border-radius: 5px;
+        bottom: -15px;
+        background-color: $white-color;
+        box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, 0.04);
+        z-index: -1;
+        margin: {
+            left: 30px;
+            right: 30px;
+        };
+    }
+    &::before {
+        content: "\f11b";
+        color: #d9dcde;
+        position: absolute;
+        top: 15px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font: {
+            family: Flaticon;
+            style: normal;
+            size: 65px;
+        };
+    }
+}
+.ml-feedback-slides {
+    .single-testimonials-item {
+        margin-top: 40px;
+    }
+}
+.user-shape1 {
+    position: absolute;
+    z-index: -1;
+    top: 12%;
+    left: 10%;
+    animation: movebounce 9s linear infinite;
+}
+.user-shape2 {
+    position: absolute;
+    z-index: -1;
+    left: 7%;
+    animation: moveleftbounce 7s linear infinite;
+    top: 47%;
+}
+.user-shape3 {
+    position: absolute;
+    z-index: -1;
+    bottom: 12%;
+    left: 15%;
+    animation: movebounce 5s linear infinite;
+}
+.user-shape4 {
+    position: absolute;
+    z-index: -1;
+    top: 12%;
+    right: 10%;
+    animation: movebounce 9s linear infinite;
+}
+.user-shape5 {
+    position: absolute;
+    z-index: -1;
+    right: 7%;
+    top: 45%;
+    animation: moveleftbounce 7s linear infinite;
+}
+.user-shape6 {
+    position: absolute;
+    z-index: -1;
+    bottom: 12%;
+    right: 15%;
+    animation: movebounce 5s linear infinite;
+}
+.shape9 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+
+    img {
+        animation: movebounce 5s linear infinite;
+    }
+}
+
+/*================================================
+Agency Feedback Area CSS
+=================================================*/
+.agency-portfolio-feedback-slides {
+    max-width: 730px;
+    margin: {
+        left: auto;
+        right: auto;
+    };
+}
+.agency-portfolio-feedback-item {
+    margin-bottom: 20px;
+    text-align: center;
+
+    img {
+        width: auto !important;
+        display: inline-block !important;
+        border-radius: 50%;
+        border: 3px solid #999999;
+    }
+    p {
+        font-size: 16px;
+        margin: {
+            top: 20px;
+            bottom: 0;
+        };
+    }
+}
+
+/*================================================
+Big Data Feedback CSS
+=================================================*/
+.bigdata-feedback-area {
+    background-color: #eef6fd;
+}
+.single-feedback-box {
+    position: relative;
+    margin: {
+        left: 25px;
+        top: 25px;
+        bottom: 30px;
+    }
+    .feedback-desc {
+        background-color: $white-color;
+        border-radius: 5px;
+        position: relative;
+        z-index: 1;
+        padding: {
+            left: 30px;
+            bottom: 30px;
+            right: 30px;
+            top: 40px;
+        }
+        p {
+            margin-bottom: 0;
+            position: relative;
+            color: $black-color;
+
+            &::before {
+                content: '"';
+                position: relative;
+                display: inline-block;
+                left: 0;
+                color: $black-color;
+            }
+            &::after {
+                content: '"';
+                position: relative;
+                display: inline-block;
+                right: 0;
+                color: $black-color;
+            }
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            left: 35px;
+            bottom: -12px;
+            width: 25px;
+            height: 25px;
+            z-index: -1;
+            background: $white-color;
+            transform: rotate(45deg);
+        }
+    }
+    &::before {
+        transition: $transition;
+        content: "\f11b";
+        position: absolute;
+        left: 0;
+        top: -25px;
+        left: -25px;
+        color: $white-color;
+        background: linear-gradient(135deg, #43e794 0%, #23bdb8 100%);
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        border-radius: 50%;
+        z-index: 2;
+        text-align: center;
+        font: {
+            family: Flaticon;
+            size: 30px;
+        }
+    }
+    .client-info {
+        position: relative;
+        padding-left: 65px;
+        margin: {
+            top: 32px;
+            bottom: 25px;
+            left: 27px;
+        }
+        img {
+            width: 50px !important;
+            height: 50px !important;
+            display: inline-block !important;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: $transition;
+        }
+        h3 {
+            margin-bottom: 0;
+            font: {
+                size: 18px;
+                weight: 600;
+            }
+        }
+        span {
+            display: block;
+            color: $paragraph-color;
+            margin-top: 6px;
+        }
+    }
+}
+
+/*================================================
+Repair Feedback CSS
+=================================================*/
+.single-repair-feedback {
+    background: $white-color;
+    border-radius: 5px;
+    margin-bottom: 55px;
+    position: relative;
+    text-align: center;
+    padding: {
+        left: 40px;
+        right: 40px;
+        top: 40px;
+        bottom: 40px;
+    }
+    .client-img {
+        position: relative;
+        text-align: left;
+        margin-bottom: 40px;
+        display: inline-block;
+        padding: {
+            left: 108px;
+            top: 18px;
+        }
+        img {
+            border-radius: 50%;
+            border: 2px solid $light-green-color;
+            padding: 3px;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 90px;
+            height: 90px;
+        }
+        h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+        span {
+            display: block;
+            color: $purple-color;
+            margin: {
+                top: 8px;
+            }
+        }
+    }
+    p {
+        font-size: 15px;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -25px;
+        width: 50px;
+        height: 50px;
+        background: $white-color;
+        right: 0;
+        margin: 0 auto;
+        transform: rotate(45deg);
+    }
+    &::after {
+        content: "\f11b";
+        color: #d9dcde;
+        font: {
+            family: Flaticon;
+            size: 30px;
+            style: normal;
+            size: 65px;
+        }
+        position: absolute;
+        top: 0;
+        left: 25px;
+    }
+}
