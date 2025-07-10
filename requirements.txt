@@ -23,7 +23,7 @@ certifi==2025.1.31
 charset-normalizer==3.4.1
 idna==3.10
 urllib3==2.4.0
-langgraph==0.0.26  # New: For LangGraph workflows (fits your existing graph in chat_agent.py)
-langchain-openai==0.0.2  # New: For ADA-003 embeddings (fits your OpenAI usage)
-# sqlite3 is built-in Python, no need to add
-# For LangGraph Studio: pip install langgraph-cli (run separately if needed for viz)
+langgraph==0.2.20  # Updated: Compatible with langchain 0.3.4 and langchain-core 0.3.x (fixes conflict)
+langchain-openai==0.0.2  # Added: For ADA-003 embeddings (fits your OpenAI usage in chat_agent.py)
+# sqlite3 is built-in, no need to add
+# For LangGraph Studio viz: pip install langgraph-cli (separate, not in requirements)
