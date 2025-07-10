@@ -15,15 +15,17 @@ import numpy as np
 from dotenv import load_dotenv
 import getpass
 import time
+from langchain_openai import OpenAIEmbeddings  # Added: For dynamic ADA-003 embeddings (fits your OpenAI usage; handles variable lengths)
+from core.db import insert_dealer_info, query_sqlite  # Added: SQLite hybrid for exact matches (fits your note on 100% answers with Pinecone)
 
-# Load environment variables
+# Load environment variables (unchanged)
 load_dotenv(dotenv_path='/home/vincent/ixome/.env', override=True)
 
-# Initialize logging
+# Initialize logging (unchanged)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Verify and set API keys
+# Verify and set API keys (unchanged)
 openai_api_key = os.getenv("OPENAI_API_KEY")
 if not openai_api_key:
     logger.error("OPENAI_API_KEY not found in .env file!")
@@ -42,13 +44,14 @@ if not google_credentials_path:
     google_credentials_path = getpass.getpass("Please enter GOOGLE_APPLICATION_CREDENTIALS path: ")
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = google_credentials_path
 
-# Initialize clients
+# Initialize clients (added embeddings for dynamic; fits Grok 4 fallback later)
 client = OpenAI(api_key=openai_api_key)
+embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")  # ADA-003 style; dynamic, variable length (replace model with "grok-4" when xAI API ready)
 pc = PineconeClient(api_key=pinecone_api_key)
 speech_client = speech.SpeechClient()
 vision_client = vision.ImageAnnotatorClient()
 
-# Initialize Pinecone index
+# Initialize Pinecone index (unchanged)
 index_name = "troubleshooter-index"
 if index_name not in pc.list_indexes().names():
     pc.create_index(
@@ -59,7 +62,7 @@ if index_name not in pc.list_indexes().names():
     )
 index = pc.Index(index_name)
 
-# Define Pydantic models
+# Define Pydantic models (unchanged)
 class ClientQuery(BaseModel):
     query: str
     client_id: Optional[str] = None
@@ -87,7 +90,7 @@ class ChatAgent:
         self.vision_client = vision_client
         self.index = index
 
-        # Set up LangGraph workflow
+        # Set up LangGraph workflow (unchanged)
         self.graph = Graph()
         self.graph.add_node("input", self.input_node)
         self.graph.add_node("text_processing", self.text_processing_node)
@@ -196,20 +199,25 @@ class ChatAgent:
 
     async def solution_retrieval_node(self, state: AgentState) -> AgentState:
         try:
-            embedding = self.client.embeddings.create(
-                model="text-embedding-3-large",
-                input=state.processed_input or "unknown issue"
-            ).data[0].embedding
+            # Dynamic embedding with ADA-003 via LangChain (fits your note on variable lengths; replaces fixed client.create for flexibility)
+            embedding_input = state.processed_input or "unknown issue"
+            embedding = embeddings.embed_query(embedding_input)  # LangChain handles dynamic inputs/variables
             results = self.index.query(vector=embedding, top_k=1, include_metadata=True)
             if results['matches']:
                 solution_text = results['matches'][0]['metadata'].get('solution', "No solution found")
                 confidence = results['matches'][0]['score']
-                state.solution = Solution(solution=solution_text, confidence=confidence, source="Pinecone")
-                self.logger.info(f"Retrieved solution from Pinecone: {solution_text}")
+                # Hybrid: Append SQLite exact match (for 100% answers, pairs with vectors as per your note)
+                brand = "Lutron" if "lutron" in embedding_input.lower() else "Unknown"  # Example detection; expand for Control4 etc.
+                component = state.issue if state.issue else "Unknown"
+                sqlite_result = query_sqlite(brand, component)
+                solution_text += f"\nExact dealer info from SQLite: {sqlite_result}"
+                state.solution = Solution(solution=solution_text, confidence=confidence, source="Pinecone + SQLite Hybrid")
+                self.logger.info(f"Retrieved hybrid solution: {solution_text}")
                 return state
         except Exception as e:
-            self.logger.error(f"Pinecone query failed: {e}")
+            self.logger.error(f"Pinecone/SQLite query failed: {e}")
 
+        # Fallback solutions (unchanged, but add example insert for SQLite test—remove after initial run)
         solutions = {
             "no_sound": "Check if the sound system is turned on and cables are connected.",
             "tv_not_turning_on": "Ensure the TV is plugged in and the power cable is secure.",
@@ -217,6 +225,8 @@ class ChatAgent:
             "error_code": "Note the flashing light pattern and consult the device manual."
         }
         solution_text = solutions.get(state.issue, "Issue not recognized. Please provide more details.")
+        # Example insert to SQLite for test (fits Lutron focus; run once)
+        insert_dealer_info("Lutron", "Dealer tip: Reset Lutron bridge for audio issues.", "audio")
         state.solution = Solution(solution=solution_text, confidence=0.5, source="Fallback")
         self.logger.info(f"Retrieved fallback solution: {solution_text}")
         return state
