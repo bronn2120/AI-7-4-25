@@ -1,7 +1,8 @@
-import os
+import osimport os
 import sys
 from dotenv import load_dotenv  # Fits your existing env loading in chat_agent.py
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scrapy-selenium', 'lutron_scraper', 'scrapy-selenium')))  # Added: Full nested path to fix ModuleNotFoundError
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scrapy-selenium', 'lutron_scraper', 'scrapy-selenium')))  # Full nested path for scrapy-selenium
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Added: Root path for core/ to fix ModuleNotFoundError
 from langgraph.graph import StateGraph, END  # Fits LangGraph 0.2.20 deps
 from typing import Dict, List, TypedDict
 from langchain_core.messages import HumanMessage
@@ -11,13 +12,13 @@ from scrapy.crawler import CrawlerRunner  # Fits Scrapy
 from scrapy.utils.log import configure_logging
 from twisted.internet import reactor, defer  # For deferred crawl and signal
 from scrapy.signals import item_scraped  # Signal to collect yielded items
-from core.db import insert_dealer_info, query_sqlite  # Hybrid fit from db.py
+from core.db import insert_dealer_info, query_sqlite  # Hybrid fit from db.py (now importable)
 # Assume your spider; adjust if class/file different (e.g., from spiders.spiders import LutronSpider if file is spiders.py)
 from spiders.lutron_spider import LutronSpider  # Preserve your spider; replace 'lutron_spider' with actual file name (no .py)
 
 load_dotenv()
 
-embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")  # Fits your embeddings; dynamic/variable length
+embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")  # Fits your embeddings; dynamic/variable length (Grok 4 placeholder: model="grok-4" when API ready)
 pc = PineconeClient(api_key=os.getenv("PINECONE_API_KEY"))
 index = pc.Index("troubleshooter-index")  # Fits your index
 
@@ -34,9 +35,9 @@ def scrape_agent(state: State) -> State:
 
     configure_logging({'LOG_FORMAT': '%(levelname)s: %(message)s'})  # Optional
     runner = CrawlerRunner()
-    crawler = yield runner.crawl(LutronSpider)  # Your existing spider; preserves parse/start_urls
-    crawler.signals.connect(collect_item, signal=item_scraped)  # Connect signal to collect
-    yield crawler  # Wait for crawl complete
+    deferred = runner.crawl(LutronSpider)  # Your existing spider; preserves parse/start_urls
+    runner.crawlers.pop().signals.connect(collect_item, signal=item_scraped)  # Connect signal
+    yield deferred  # Wait for crawl complete
     # Process collected items (fits your vector loading note)
     for item in scraped_data:
         insert_dealer_info("Lutron", item.get('info', ''), item.get('component', ''))  # Hybrid to SQLite
