@@ -27,18 +27,21 @@ def scrape_agent(state: State) -> State:
     spider_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scrapy-selenium', 'lutron_scraper', 'lutron_scraper'))  # Change dir to your project root for run
     output_file = '/tmp/scraped_items.json'  # Temp JSON in /tmp to avoid dir issues
     try:
-        subprocess.call(['scrapy', 'crawl', 'lutron', '-o', output_file], cwd=spider_dir)  # Run spider, output to JSON (changed name to 'lutron'; adjust if different from 'scrapy list')
+        subprocess.call(['scrapy', 'crawl', 'lutron', '-o', output_file], cwd=spider_dir)  # Run spider, output to JSON (name 'lutron' fits your bot 'lutron_scraper')
         with open(output_file, 'r') as f:
-            scraped_data = json.load(f)  # Load yielded items (fits your spider yield {'info': ..., 'component': ...})
+            scraped_data = json.load(f)  # Load yielded items (fits your spider yield dicts)
         os.remove(output_file)  # Clean up
+        print("Debug: Scraped data keys and sample: ", scraped_data[0] if scraped_data else "No items scraped")  # Added: Debug to show actual keys (reply with this output for tweak)
     except Exception as e:
         print(f"Scrapy run error: {e}")  # Log; continue with empty for test
-    # Process collected items (fits your vector loading note)
+    # Process collected items (fits your vector loading note—dynamic on item text)
     for item in scraped_data:
-        insert_dealer_info("Lutron", item.get('info', ''), item.get('component', ''))  # Hybrid to SQLite
+        info = ' '.join(str(v) for v in item.values())  # Dynamic: Concat all values for embed/upsert (handles any keys)
+        component = item.get('component', 'unknown') or next(iter(item), 'unknown')  # Dynamic component (first key if no 'component')
+        insert_dealer_info("Lutron", info, component)  # Hybrid to SQLite
         # Dynamic upsert to Pinecone (batch for efficiency, variable lengths)
-        emb = embeddings.embed_query(item.get('info', 'unknown'))
-        index.upsert([{"id": str(hash(item['info'])), "values": emb, "metadata": {"solution": item['info'], "brand": "Lutron"}}])
+        emb = embeddings.embed_query(info)
+        index.upsert([{"id": str(hash(info)), "values": emb, "metadata": {"solution": info, "brand": "Lutron"}}])
     return {"scraped_data": scraped_data, "messages": state["messages"] + ["Scraped Lutron data"]}
 
 def query_agent(state: State) -> State:
@@ -62,4 +65,4 @@ app = graph.compile()
 if __name__ == "__main__":
     initial_state = {"messages": [], "scraped_data": []}
     result = app.invoke(initial_state)
-    print(result)  # Output: {'messages': ['Scraped Lutron data', 'Pinecone: ... \nSQLite: ...'], 'scraped_data': [{'info': ..., 'component': ...}, ...]}
+    print(result)  # Output: {'messages': ['Scraped Lutron data', 'Pinecone: ... \nSQLite: ...'], 'scraped_data': [...]}
