@@ -1,20 +1,13 @@
 import os
-import sys
+import subprocess
+import json
 from dotenv import load_dotenv  # Fits your existing env loading in chat_agent.py
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scrapy-selenium', 'lutron_scraper', 'lutron_scraper', 'spiders')))  # Full nested path to spiders/ dir to fix ModuleNotFoundError
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Root path for core/ 
 from langgraph.graph import StateGraph, END  # Fits LangGraph 0.2.20 deps
 from typing import Dict, List, TypedDict
 from langchain_core.messages import HumanMessage
 from langchain_openai import OpenAIEmbeddings  # Embeddings fit (dynamic for variable data)
 from pinecone import Pinecone as PineconeClient  # Fits your pc/init in chat_agent.py
-from scrapy.crawler import CrawlerRunner  # Fits Scrapy
-from scrapy.utils.log import configure_logging
-from twisted.internet import reactor, defer  # For deferred crawl and signal
-from scrapy.signals import item_scraped  # Signal to collect yielded items
 from core.db import insert_dealer_info, query_sqlite  # Hybrid fit from db.py
-# Assume your spider file in spiders/; import class from file (lutron_spider.py as module)
-from lutron_spider import LutronSpider  # Preserve your spider; replace 'lutron_spider' with actual file name (no .py) if different
 
 load_dotenv()
 
@@ -26,25 +19,24 @@ class State(TypedDict):
     messages: List[str]
     scraped_data: List[Dict[str, str]]
 
-@defer.inlineCallbacks
 def scrape_agent(state: State) -> State:
-    scraped_data = []  # Collect yielded items
-    def collect_item(item, response, spider):
-        scraped_data.append(item)  # Append from item_scraped signal
-        return item
-
-    configure_logging({'LOG_FORMAT': '%(levelname)s: %(message)s'})  # Optional
-    runner = CrawlerRunner()
-    deferred = runner.crawl(LutronSpider)  # Your existing spider; preserves parse/start_urls
-    runner.crawlers.pop().signals.connect(collect_item, signal=item_scraped)  # Connect signal
-    yield deferred  # Wait for crawl complete
+    scraped_data = []  # Collect yielded items from JSON
+    # Run Scrapy via subprocess (fits your nested path; avoids import issues, preserves spider 100%)
+    spider_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scrapy-selenium', 'lutron_scraper', 'lutron_scraper'))  # Change dir to your project root for run
+    output_file = os.path.join(spider_dir, 'scraped_items.json')  # Temp JSON output
+    try:
+        subprocess.call(['scrapy', 'crawl', 'lutron_spider', '-o', output_file], cwd=spider_dir)  # Run spider, output to JSON (assume spider name 'lutron_spider'; adjust if different)
+        with open(output_file, 'r') as f:
+            scraped_data = json.load(f)  # Load yielded items (fits your spider yield {'info': ..., 'component': ...})
+        os.remove(output_file)  # Clean up
+    except Exception as e:
+        print(f"Scrapy run error: {e}")  # Log; continue with empty for test
     # Process collected items (fits your vector loading note)
     for item in scraped_data:
         insert_dealer_info("Lutron", item.get('info', ''), item.get('component', ''))  # Hybrid to SQLite
         # Dynamic upsert to Pinecone (batch for efficiency, variable lengths)
         emb = embeddings.embed_query(item.get('info', 'unknown'))
         index.upsert([{"id": str(hash(item['info'])), "values": emb, "metadata": {"solution": item['info'], "brand": "Lutron"}}])
-    reactor.stop()  # Stop after
     return {"scraped_data": scraped_data, "messages": state["messages"] + ["Scraped Lutron data"]}
 
 def query_agent(state: State) -> State:
