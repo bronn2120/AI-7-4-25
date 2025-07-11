@@ -27,21 +27,22 @@ def scrape_agent(state: State) -> State:
     spider_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scrapy-selenium', 'lutron_scraper', 'lutron_scraper'))  # Change dir to your project root for run
     output_file = '/tmp/scraped_items.json'  # Temp JSON in /tmp to avoid dir issues
     try:
-        subprocess.call(['scrapy', 'crawl', 'lutron', '-o', output_file], cwd=spider_dir)  # Run spider, output to JSON (name 'lutron' fits your bot 'lutron_scraper')
+        subprocess.call(['scrapy', 'crawl', 'lutron', '-o', output_file], cwd=spider_dir)  # Run spider, output to JSON (name 'lutron' fits your bot)
         with open(output_file, 'r') as f:
             scraped_data = json.load(f)  # Load yielded items (fits your spider yield dicts)
         os.remove(output_file)  # Clean up
-        print("Debug: Scraped data keys and sample: ", scraped_data[0] if scraped_data else "No items scraped")  # Added: Debug to show actual keys (reply with this output for tweak)
+        print("Debug: Scraped data keys and sample: ", scraped_data[0] if scraped_data else "No items scraped")  # Debug for keys
     except Exception as e:
         print(f"Scrapy run error: {e}")  # Log; continue with empty for test
-    # Process collected items (fits your vector loading note—dynamic on item text)
+    # Process collected items (fits your vector loading note—dynamic on 'solution')
     for item in scraped_data:
-        info = ' '.join(str(v) for v in item.values())  # Dynamic: Concat all values for embed/upsert (handles any keys)
-        component = item.get('component', 'unknown') or next(iter(item), 'unknown')  # Dynamic component (first key if no 'component')
-        insert_dealer_info("Lutron", info, component)  # Hybrid to SQLite
+        info = item.get('solution', ' '.join(str(v) for v in item.values()))  # Use 'solution' or concat all
+        component = item.get('product', 'unknown')  # From your debug keys
+        insert_dealer_info("Lutron", info, component)  # Hybrid to SQLite (full text, no limit)
         # Dynamic upsert to Pinecone (batch for efficiency, variable lengths)
-        emb = embeddings.embed_query(info)
-        index.upsert([{"id": str(hash(info)), "values": emb, "metadata": {"solution": info, "brand": "Lutron"}}])
+        emb = embeddings.embed_query(info)  # Embed full for search
+        metadata_solution = info[:40000]  # Truncate to <40KB for metadata limit (fits Pinecone best practice)
+        index.upsert([{"id": str(hash(info)), "values": emb, "metadata": {"solution": metadata_solution, "brand": "Lutron", "issue": item.get('issue', ''), "category": item.get('category', ''), "url": item.get('url', '')}}])
     return {"scraped_data": scraped_data, "messages": state["messages"] + ["Scraped Lutron data"]}
 
 def query_agent(state: State) -> State:
@@ -65,4 +66,4 @@ app = graph.compile()
 if __name__ == "__main__":
     initial_state = {"messages": [], "scraped_data": []}
     result = app.invoke(initial_state)
-    print(result)  # Output: {'messages': ['Scraped Lutron data', 'Pinecone: ... \nSQLite: ...'], 'scraped_data': [...]}
+    print(result)  # Output: {'messages': ['Scraped Lutron data', 'Pinecone: ... \nSQLite: ...'], 'scraped_data': [{'issue': ..., 'solution': ..., 'product': ..., ...}, ...]}
