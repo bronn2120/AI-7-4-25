@@ -13,8 +13,8 @@ from scrapy.utils.log import configure_logging
 from twisted.internet import reactor, defer  # For deferred crawl and signal
 from scrapy.signals import item_scraped  # Signal to collect yielded items
 from core.db import insert_dealer_info, query_sqlite  # Hybrid fit from db.py
-# Assume your spider file in spiders/; import from package.file (spiders.lutron_spider as module if file lutron_spider.py)
-from spiders.lutron_spider import LutronSpider  # Preserve your spider; replace 'lutron_spider' with actual file name (no .py) if different
+# Assume your spider file in spiders/; import class from file (lutron_spider.py as module)
+from lutron_spider import LutronSpider  # Preserve your spider; replace 'lutron_spider' with actual file name (no .py) if different
 
 load_dotenv()
 
