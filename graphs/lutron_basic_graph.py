@@ -1,7 +1,7 @@
 import os
 import sys
 from dotenv import load_dotenv  # Fits your existing env loading in chat_agent.py
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scrapy-selenium', 'lutron_scraper', 'scrapy-selenium')))  # Full nested path for scrapy-selenium
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scrapy-selenium', 'lutron_scraper', 'scrapy-selenium', 'spiders')))  # Added: Full nested path to spiders/ dir to fix ModuleNotFoundError
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Root path for core/ 
 from langgraph.graph import StateGraph, END  # Fits LangGraph 0.2.20 deps
 from typing import Dict, List, TypedDict
@@ -13,8 +13,8 @@ from scrapy.utils.log import configure_logging
 from twisted.internet import reactor, defer  # For deferred crawl and signal
 from scrapy.signals import item_scraped  # Signal to collect yielded items
 from core.db import insert_dealer_info, query_sqlite  # Hybrid fit from db.py
-# Assume your spider; adjust if class/file different (e.g., from spiders.spiders import LutronSpider if file is spiders.py)
-from spiders.lutron_spider import LutronSpider  # Preserve your spider; replace 'lutron_spider' with actual file name (no .py)
+# Assume your spider file in spiders/; import class from file (lutron_spider.py as module)
+from lutron_spider import LutronSpider  # Preserve your spider; replace 'lutron_spider' with actual file name (no .py) if different
 
 load_dotenv()
 
