@@ -3,7 +3,7 @@ import subprocess
 import json
 from dotenv import load_dotenv  # Fits your existing env loading in chat_agent.py
 import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Added: Root path for core/ to fix ModuleNotFoundError
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Root path for core/ 
 from langgraph.graph import StateGraph, END  # Fits LangGraph 0.2.20 deps
 from typing import Dict, List, TypedDict
 from langchain_core.messages import HumanMessage
@@ -25,9 +25,9 @@ def scrape_agent(state: State) -> State:
     scraped_data = []  # Collect yielded items from JSON
     # Run Scrapy via subprocess (fits your nested path; avoids import issues, preserves spider 100%)
     spider_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scrapy-selenium', 'lutron_scraper', 'lutron_scraper'))  # Change dir to your project root for run
-    output_file = os.path.join(spider_dir, 'scraped_items.json')  # Temp JSON output
+    output_file = '/tmp/scraped_items.json'  # Temp JSON in /tmp to avoid dir issues
     try:
-        subprocess.call(['scrapy', 'crawl', 'lutron_spider', '-o', output_file], cwd=spider_dir)  # Run spider, output to JSON (assume spider name 'lutron_spider'; adjust if different)
+        subprocess.call(['scrapy', 'crawl', 'lutron', '-o', output_file], cwd=spider_dir)  # Run spider, output to JSON (changed name to 'lutron'; adjust if different from 'scrapy list')
         with open(output_file, 'r') as f:
             scraped_data = json.load(f)  # Load yielded items (fits your spider yield {'info': ..., 'component': ...})
         os.remove(output_file)  # Clean up
@@ -44,7 +44,8 @@ def scrape_agent(state: State) -> State:
 def query_agent(state: State) -> State:
     # Hybrid query (fits retrieval in chat_agent.py)
     emb = embeddings.embed_query("Lutron rack issue")
-    pinecone_result = index.query(vector=emb, top_k=1, include_metadata=True).get('matches', [{}])[0].get('metadata', {}).get('solution', '')
+    results = index.query(vector=emb, top_k=1, include_metadata=True).get('matches', [])
+    pinecone_result = results[0].get('metadata', {}).get('solution', '') if results else 'No Pinecone matches'
     sqlite_result = query_sqlite("Lutron", "audio")  # Example; dynamic from input/issue later
     combined = f"Pinecone: {pinecone_result}\nSQLite: {sqlite_result}"
     return {"messages": state["messages"] + [combined]}
