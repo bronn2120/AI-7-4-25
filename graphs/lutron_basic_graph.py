@@ -2,6 +2,8 @@ import os
 import subprocess
 import json
 from dotenv import load_dotenv  # Fits your existing env loading in chat_agent.py
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))  # Added: Root path for core/ to fix ModuleNotFoundError
 from langgraph.graph import StateGraph, END  # Fits LangGraph 0.2.20 deps
 from typing import Dict, List, TypedDict
 from langchain_core.messages import HumanMessage
