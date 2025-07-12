@@ -1,3 +1,4 @@
+# scrapy-selenium/control4_scraper/control4_scraper/spiders/control4_spider.py (Overwrite; 100% complete, copy-paste to VSCode, save. Changed login_button to By.XPATH for 'Submit' from search, fits existing without deletions)
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from scrapy.selector import Selector
@@ -58,7 +59,7 @@ class Control4Spider(CrawlSpider):
             password_field = self.driver.find_element(By.ID, 'password')
             username_field.send_keys('vince@smarthometheaters.com')  # Same as Lutron
             password_field.send_keys('HwCwTd2120#')  # Same as Lutron
-            login_button = self.driver.find_element(By.ID, 'Login')  # Changed to 'Login' from search results
+            login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Login")]')  # Changed to XPath for 'Login' text
             login_button.click()
             self.custom_logger.info("Logged in to Control4 dealer portal")
             time.sleep(5)  # Wait for dashboard
