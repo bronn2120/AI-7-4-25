@@ -36,7 +36,7 @@ class Control4Spider(CrawlSpider):
         self.custom_logger.info("Control4Spider initialized")
         load_dotenv(dotenv_path='/home/vincent/ixome/.env')
         options = webdriver.ChromeOptions()
-        # options.add_argument('--headless')  # Uncomment for headless; keep commented to watch login
+        options.add_argument('--headless')
         options.add_argument('--disable-gpu')
         options.add_argument('--no-sandbox')
         options.binary_location = '/opt/google/chrome/chrome'
@@ -46,27 +46,46 @@ class Control4Spider(CrawlSpider):
         self.login_to_dealer_portal()
 
     def login_to_dealer_portal(self):
-        login_url = 'https://dealer.control4.com/Login'  # Dealer login URL from web results
-        self.driver.get(login_url)
-        time.sleep(5)  # Longer wait for load
+        for_pros_url = 'https://www.snapav.com/shop/en/snapav/for-pros'  # Start at for-pros page as per user
+        self.driver.get(for_pros_url)
+        time.sleep(5)  # Wait for load
         self.custom_logger.info(f"Page source after load: {self.driver.page_source[:500]}...")  # Log for debug
         try:
+            # Click top login button
+            login_button = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, '//a[contains(text(), "Log In") or contains(@class, "login") or @href containing "LogonForm"]'))
+            )
+            login_button.click()
+            time.sleep(5)  # Wait for modal
+            # Handle if form in iframe
+            try:
+                iframes = self.driver.find_elements(By.TAG_NAME, 'iframe')
+                for iframe in iframes:
+                    self.driver.switch_to.frame(iframe)
+                    if len(self.driver.find_elements(By.ID, 'logonId')) > 0:
+                        break
+                else:
+                    self.driver.switch_to.default_content()
+            except:
+                self.custom_logger.debug("No iframe for login form")
             username_field = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.ID, 'username'))  # Username field from web results
+                EC.presence_of_element_located((By.ID, 'logonId'))  # User ID field from web results
             )
             password_field = self.driver.find_element(By.ID, 'password')
             username_field.send_keys('vince@smarthometheaters.com')
             password_field.send_keys('HwCwTd2120#')
-            login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log in") or @type="submit"]')  # XPath for button from web results
-            self.driver.execute_script("arguments[0].click();", login_button)  # JS click to trigger events
+            login_submit = self.driver.find_element(By.ID, 'logonButton')  # Submit from web results
+            login_submit.click()
             time.sleep(5)
-            self.custom_logger.info("Logged in to Control4 dealer portal")
+            self.custom_logger.info("Logged in to Snap One")
             self.custom_logger.info(f"Current URL after login: {self.driver.current_url}")
-            # Navigate to dealer resources if not redirected
-            if 'for-pros' not in self.driver.current_url:
-                self.driver.get('https://www.snapav.com/shop/en/snapav/for-pros')
-                time.sleep(5)
-            self.custom_logger.info(f"Current URL after navigation: {self.driver.current_url}")
+            # Navigate to All Control4 Resources > Tech Community
+            self.driver.get('https://tech.control4.com/s/login/?language=en_US&ec=302&startURL=%2Fs%2F')  # User-provided URL
+            time.sleep(5)
+            snap_one_portal_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Snap One Portal")]')  # Click Snap One Portal button
+            snap_one_portal_button.click()
+            time.sleep(5)
+            self.custom_logger.info(f"Current URL after Snap One Portal click: {self.driver.current_url}")
         except Exception as e:
             self.custom_logger.error(f"Login error: {e}")
 
