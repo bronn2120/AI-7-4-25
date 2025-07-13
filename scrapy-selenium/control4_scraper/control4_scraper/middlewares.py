@@ -7,6 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.chrome.service import Service as ChromeService
 import time
+import webdriver_manager.chrome
+from selenium import webdriver
 
 class SeleniumMiddleware:
     def __init__(self, driver_name, driver_executable_path, browser_executable_path, driver_arguments, driver_headless):

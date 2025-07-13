@@ -20,7 +20,7 @@ class Control4Spider(CrawlSpider):
         'https://www.control4.com/help',
         'https://knowledgebase.control4.com/hc/en-us/categories/360000246514-Troubleshooting',
         'https://www.control4.com/files/pdf/techdocs',
-        'https://tech.control4.com/s/'  # Dealer knowledgebase post-login (from your insight)
+        'https://tech.control4.com/s/'  # Dealer knowledgebase
     ]
 
     rules = (
@@ -45,30 +45,39 @@ class Control4Spider(CrawlSpider):
         self.login_to_dealer_portal()
 
     def login_to_dealer_portal(self):
-        login_url = 'https://www.snapav.com/'  # SnapAV login (from your insight)
+        login_url = 'https://www.snapav.com/'
         self.driver.get(login_url)
         time.sleep(3)
         try:
-            # Click login link to reach form (SnapAV requires link click first)
+            # Click login link to open modal
             login_link = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, '//a[contains(text(), "Log In") or contains(text(), "Login")]'))
+                EC.element_to_be_clickable((By.XPATH, '//a[contains(text(), "Log In") or contains(text(), "Login") or @class="login-link"]'))
             )
             login_link.click()
             time.sleep(2)
+            # Handle potential iframe/modal
+            try:
+                self.driver.switch_to.frame(self.driver.find_element(By.XPATH, '//iframe[contains(@src, "login")]'))
+            except:
+                pass
             username_field = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.ID, 'username'))
             )
             password_field = self.driver.find_element(By.ID, 'password')
             username_field.send_keys('vince@smarthometheaters.com')
             password_field.send_keys('HwCwTd2120#')
-            # Try XPath for 'Log In' text, fallback to CSS
+            # Try multiple selectors for login button
             try:
-                login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log In") or contains(text(), "Login")]')
+                login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log In") or contains(text(), "Login") or contains(text(), "Sign In")]')
             except:
-                login_button = self.driver.find_element(By.CSS_SELECTOR, 'button.btn-login, button.btn-primary, button[type="submit"]')
+                try:
+                    login_button = self.driver.find_element(By.CSS_SELECTOR, 'button.c4-login__btn, button.btn-primary, button[type="submit"]')
+                except:
+                    login_button = self.driver.find_element(By.CLASS_NAME, 'btn-login')
             login_button.click()
-            self.custom_logger.info("Logged in to SnapAV for Control4 dealer portal")
             time.sleep(5)
+            self.driver.switch_to.default_content()
+            self.custom_logger.info("Logged in to SnapAV for Control4 dealer portal")
         except Exception as e:
             self.custom_logger.error(f"Login error: {e}")
 
