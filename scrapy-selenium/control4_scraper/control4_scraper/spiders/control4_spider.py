@@ -46,23 +46,23 @@ class Control4Spider(CrawlSpider):
         self.login_to_dealer_portal()
 
     def login_to_dealer_portal(self):
-        login_url = 'https://www.snapav.com/shop/LogonForm?catalogId=10010&storeId=10151&langId=-1&krypto=3zIlLvntlb6%2Bq0lCzl0L2ESswxB2nKphkki9QpzB8LQ5ySHUaHrL%2BvoGWSBKqhLXHJZDXw4c5cBShX%2FdcOIaYw%3D%3D'  # Your LogonForm URL
+        login_url = 'https://dealer.control4.com/Login'  # Current dealer login URL from web results
         self.driver.get(login_url)
-        time.sleep(3)
+        time.sleep(5)  # Longer wait for page load
         try:
-            username_field = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.ID, 'logonId'))  # User ID field from web results
+            username_field = WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.ID, 'username'))  # Username field from web results
             )
             password_field = self.driver.find_element(By.ID, 'password')
             username_field.send_keys('vince@smarthometheaters.com')
             password_field.send_keys('HwCwTd2120#')
-            login_button = self.driver.find_element(By.ID, 'logonButton')  # Submit button from web results
+            login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log In") or contains(text(), "Login") or @type="submit"]')  # Robust XPath for submit
             login_button.click()
-            self.custom_logger.info("Logged in to SnapAV for Control4 dealer portal")
             time.sleep(5)
-            self.custom_logger.info(f"Current URL after login: {self.driver.current_url}")  # Log to check if login succeeded
+            self.custom_logger.info("Logged in to Control4 dealer portal")
+            self.custom_logger.info(f"Current URL after login: {self.driver.current_url}")
             # Navigate to dealer resources if not redirected
-            if 'for-pros' not in self.driver.current_url:
+            if 'for-pros' not in self.driver.current_url and 'tech.control4.com' not in self.driver.current_url:
                 self.driver.get('https://www.snapav.com/shop/en/snapav/for-pros')
                 time.sleep(5)
             self.custom_logger.info(f"Current URL after navigation: {self.driver.current_url}")
