@@ -75,7 +75,7 @@ class Control4Spider(CrawlSpider):
             username_field.send_keys('vince@smarthometheaters.com')
             password_field.send_keys('HwCwTd2120#')
             login_submit = self.driver.find_element(By.ID, 'logonButton')  # Submit from web results
-            login_submit.click()
+            self.driver.execute_script("arguments[0].click();", login_submit)  # JS click to trigger events
             time.sleep(5)
             self.custom_logger.info("Logged in to Snap One")
             self.custom_logger.info(f"Current URL after login: {self.driver.current_url}")
