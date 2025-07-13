@@ -20,7 +20,7 @@ class Control4Spider(CrawlSpider):
         'https://www.control4.com/help',
         'https://knowledgebase.control4.com/hc/en-us/categories/360000246514-Troubleshooting',
         'https://www.control4.com/files/pdf/techdocs',
-        'https://tech.control4.com/s/'  # Dealer knowledgebase
+        'https://tech.control4.com/s/'
     ]
 
     rules = (
@@ -38,6 +38,7 @@ class Control4Spider(CrawlSpider):
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
         options.add_argument('--no-sandbox')
+        options.add_argument('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36')
         options.binary_location = '/opt/google/chrome/chrome'
         service = Service('/usr/local/bin/chromedriver')
         self.driver = webdriver.Chrome(service=service, options=options)
@@ -47,20 +48,26 @@ class Control4Spider(CrawlSpider):
     def login_to_dealer_portal(self):
         login_url = 'https://www.snapav.com/'
         self.driver.get(login_url)
-        time.sleep(3)
+        time.sleep(5)  # Longer wait for JS
         try:
             # Click login link to open modal
-            login_link = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, '//a[contains(text(), "Log In") or contains(text(), "Login") or @class="login-link"]'))
+            login_link = WebDriverWait(self.driver, 15).until(
+                EC.element_to_be_clickable((By.XPATH, '//a[contains(translate(text(), "LOGIN", "login"), "log in") or contains(translate(text(), "LOGIN", "login"), "login") or @class="login-link" or @href="/login"]'))
             )
             login_link.click()
-            time.sleep(2)
-            # Handle potential iframe/modal
+            time.sleep(3)
+            # Handle iframe/modal
             try:
-                self.driver.switch_to.frame(self.driver.find_element(By.XPATH, '//iframe[contains(@src, "login")]'))
+                iframes = self.driver.find_elements(By.TAG_NAME, 'iframe')
+                for iframe in iframes:
+                    self.driver.switch_to.frame(iframe)
+                    if len(self.driver.find_elements(By.ID, 'username')) > 0:
+                        break
+                else:
+                    self.driver.switch_to.default_content()
             except:
-                pass
-            username_field = WebDriverWait(self.driver, 10).until(
+                self.custom_logger.debug("No iframe found for login form")
+            username_field = WebDriverWait(self.driver, 15).until(
                 EC.presence_of_element_located((By.ID, 'username'))
             )
             password_field = self.driver.find_element(By.ID, 'password')
@@ -68,12 +75,14 @@ class Control4Spider(CrawlSpider):
             password_field.send_keys('HwCwTd2120#')
             # Try multiple selectors for login button
             try:
-                login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log In") or contains(text(), "Login") or contains(text(), "Sign In")]')
+                login_button = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, '//button[contains(translate(text(), "LOGIN", "login"), "log in") or contains(translate(text(), "LOGIN", "login"), "sign in")]'))
+                )
             except:
                 try:
-                    login_button = self.driver.find_element(By.CSS_SELECTOR, 'button.c4-login__btn, button.btn-primary, button[type="submit"]')
+                    login_button = self.driver.find_element(By.CSS_SELECTOR, 'button.c4-login__btn, button.btn-primary, button.btn-login, button[type="submit"]')
                 except:
-                    login_button = self.driver.find_element(By.CLASS_NAME, 'btn-login')
+                    login_button = self.driver.find_element(By.XPATH, '//button[@type="submit"]')
             login_button.click()
             time.sleep(5)
             self.driver.switch_to.default_content()
@@ -133,9 +142,9 @@ class Control4Spider(CrawlSpider):
         else:
             sel = response
         item = Control4ScraperItem()
-        item['issue'] = sel.css('h1::text, h2::text, h3::text, h4::text, .coh-heading::text, .card-title::text, .panel-title::text').get(default='').strip()
-        item['solution'] = ' '.join(sel.css('div.card-content p::text, div.panel-body p::text, div.top-category-list-content p::text, ul li::text, .faq-answer::text, .instructions::text, div.modal-body p::text, div.content p::text, div.article-content p::text').getall()).strip()
-        item['product'] = sel.css('h3::text, .coh-heading::text, .card-title::text, .product-name::text, .product-detail::text').get(default='').strip()
+        item['issue'] = sel.css('h1::text, h2::text, h3::text, h4::text, .coh-heading::text, .card-title::text, .panel-title::text, .title::text, .article-title::text').get(default='').strip()
+        item['solution'] = ' '.join(sel.css('div.card-content p::text, div.panel-body p::text, div.top-category-list-content p::text, ul li::text, .faq-answer::text, .instructions::text, div.modal-body p::text, div.content p::text, div.article-content p::text, article p::text, .kb-article p::text').getall()).strip()
+        item['product'] = sel.css('h3::text, .coh-heading::text, .card-title::text, .product-name::text, .product-detail::text, .kb-product::text').get(default='').strip()
         item['category'] = (
             'Troubleshooting' if any(x in response.url.lower() for x in ['troubleshoot', 'support', 'technical', 'help', 'faq', 'instructions', 'forums', 'kb'])
             else 'General'
