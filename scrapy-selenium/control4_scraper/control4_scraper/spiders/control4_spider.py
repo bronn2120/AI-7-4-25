@@ -60,6 +60,12 @@ class Control4Spider(CrawlSpider):
             login_button.click()
             self.custom_logger.info("Logged in to SnapAV for Control4 dealer portal")
             time.sleep(5)
+            self.custom_logger.info(f"Current URL after login: {self.driver.current_url}")  # Log to check if login succeeded
+            # Navigate to dealer resources if not redirected
+            if 'for-pros' not in self.driver.current_url:
+                self.driver.get('https://www.snapav.com/shop/en/snapav/for-pros')
+                time.sleep(5)
+            self.custom_logger.info(f"Current URL after navigation: {self.driver.current_url}")
         except Exception as e:
             self.custom_logger.error(f"Login error: {e}")
 
