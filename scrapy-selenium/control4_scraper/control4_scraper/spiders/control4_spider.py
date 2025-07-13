@@ -15,7 +15,7 @@ import time
 
 class Control4Spider(CrawlSpider):
     name = 'control4'
-    allowed_domains = ['control4.com', 'dealer.control4.com', 'knowledgebase.control4.com', 'support.control4.com', 'snapav.com', 'snapone.com', 'tech.control4.com']
+    allowed_domains = ['control4.com', 'dealer.control4.com', 'knowledgebase.control4.com', 'support.control4.com', 'snapav.com', 'snapone.com', 'tech.control4.com', 'account.snapone.com', 'my.control4.com']
     start_urls = [
         'https://www.control4.com/help',
         'https://knowledgebase.control4.com/hc/en-us/categories/360000246514-Troubleshooting',
@@ -35,7 +35,7 @@ class Control4Spider(CrawlSpider):
         self.custom_logger.info("Control4Spider initialized")
         load_dotenv(dotenv_path='/home/vincent/ixome/.env')
         options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
+        options.add_argument('--headless')  # Comment out for non-headless debugging
         options.add_argument('--disable-gpu')
         options.add_argument('--no-sandbox')
         options.add_argument('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36')
@@ -48,11 +48,11 @@ class Control4Spider(CrawlSpider):
     def login_to_dealer_portal(self):
         login_url = 'https://www.snapav.com/'
         self.driver.get(login_url)
-        time.sleep(5)  # Longer wait for JS
+        time.sleep(5)  # Wait for JS
         try:
             # Click login link to open modal
-            login_link = WebDriverWait(self.driver, 15).until(
-                EC.element_to_be_clickable((By.XPATH, '//a[contains(translate(text(), "LOGIN", "login"), "log in") or contains(translate(text(), "LOGIN", "login"), "login") or @class="login-link" or @href="/login"]'))
+            login_link = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((By.XPATH, '//a[contains(translate(text(), "LOGIN", "login"), "log in") or contains(translate(text(), "LOGIN", "login"), "sign in") or @class="login-link" or @href="/login" or @href="/account"]'))
             )
             login_link.click()
             time.sleep(3)
@@ -67,7 +67,10 @@ class Control4Spider(CrawlSpider):
                     self.driver.switch_to.default_content()
             except:
                 self.custom_logger.debug("No iframe found for login form")
-            username_field = WebDriverWait(self.driver, 15).until(
+            # Handle potential redirect
+            if 'account.snapone.com' in self.driver.current_url or 'my.control4.com' in self.driver.current_url:
+                self.custom_logger.info("Redirected to account portal")
+            username_field = WebDriverWait(self.driver, 20).until(
                 EC.presence_of_element_located((By.ID, 'username'))
             )
             password_field = self.driver.find_element(By.ID, 'password')
@@ -76,17 +79,17 @@ class Control4Spider(CrawlSpider):
             # Try multiple selectors for login button
             try:
                 login_button = WebDriverWait(self.driver, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, '//button[contains(translate(text(), "LOGIN", "login"), "log in") or contains(translate(text(), "LOGIN", "login"), "sign in")]'))
+                    EC.element_to_be_clickable((By.XPATH, '//button[contains(translate(text(), "LOGIN", "login"), "log in") or contains(translate(text(), "LOGIN", "login"), "sign in") or contains(translate(text(), "LOGIN", "login"), "submit")]'))
                 )
             except:
                 try:
-                    login_button = self.driver.find_element(By.CSS_SELECTOR, 'button.c4-login__btn, button.btn-primary, button.btn-login, button[type="submit"]')
+                    login_button = self.driver.find_element(By.CSS_SELECTOR, 'button.c4-login__btn, button.btn-primary, button.btn-login, button[type="submit"], input[type="submit"]')
                 except:
-                    login_button = self.driver.find_element(By.XPATH, '//button[@type="submit"]')
+                    login_button = self.driver.find_element(By.XPATH, '//button[@type="submit" or contains(@class, "login")]')
             login_button.click()
-            time.sleep(5)
+            time.sleep(7)  # Wait for redirect
             self.driver.switch_to.default_content()
-            self.custom_logger.info("Logged in to SnapAV for Control4 dealer portal")
+            self.custom_logger.info(f"Logged in to SnapAV, current URL: {self.driver.current_url}")
         except Exception as e:
             self.custom_logger.error(f"Login error: {e}")
 
@@ -142,8 +145,8 @@ class Control4Spider(CrawlSpider):
         else:
             sel = response
         item = Control4ScraperItem()
-        item['issue'] = sel.css('h1::text, h2::text, h3::text, h4::text, .coh-heading::text, .card-title::text, .panel-title::text, .title::text, .article-title::text').get(default='').strip()
-        item['solution'] = ' '.join(sel.css('div.card-content p::text, div.panel-body p::text, div.top-category-list-content p::text, ul li::text, .faq-answer::text, .instructions::text, div.modal-body p::text, div.content p::text, div.article-content p::text, article p::text, .kb-article p::text').getall()).strip()
+        item['issue'] = sel.css('h1::text, h2::text, h3::text, h4::text, .coh-heading::text, .card-title::text, .panel-title::text, .title::text, .article-title::text, .kb-article-title::text').get(default='').strip()
+        item['solution'] = ' '.join(sel.css('div.card-content p::text, div.panel-body p::text, div.top-category-list-content p::text, ul li::text, .faq-answer::text, .instructions::text, div.modal-body p::text, div.content p::text, div.article-content p::text, article p::text, .kb-article p::text, section p::text').getall()).strip()
         item['product'] = sel.css('h3::text, .coh-heading::text, .card-title::text, .product-name::text, .product-detail::text, .kb-product::text').get(default='').strip()
         item['category'] = (
             'Troubleshooting' if any(x in response.url.lower() for x in ['troubleshoot', 'support', 'technical', 'help', 'faq', 'instructions', 'forums', 'kb'])
