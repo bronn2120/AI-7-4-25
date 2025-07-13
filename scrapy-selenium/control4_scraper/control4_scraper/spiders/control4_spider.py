@@ -36,7 +36,7 @@ class Control4Spider(CrawlSpider):
         self.custom_logger.info("Control4Spider initialized")
         load_dotenv(dotenv_path='/home/vincent/ixome/.env')
         options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
+        # options.add_argument('--headless')  # Uncomment for non-headless to watch login
         options.add_argument('--disable-gpu')
         options.add_argument('--no-sandbox')
         options.binary_location = '/opt/google/chrome/chrome'
@@ -57,7 +57,7 @@ class Control4Spider(CrawlSpider):
             password_field = self.driver.find_element(By.ID, 'password')
             username_field.send_keys('vince@smarthometheaters.com')
             password_field.send_keys('HwCwTd2120#')
-            login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log in") or @type="submit"]')  # XPath for button from web results
+            login_button = self.driver.find_element(By.CSS_SELECTOR, '.btn-primary')  # Button class from web results
             login_button.click()
             time.sleep(5)
             self.custom_logger.info("Logged in to Control4 dealer portal")
