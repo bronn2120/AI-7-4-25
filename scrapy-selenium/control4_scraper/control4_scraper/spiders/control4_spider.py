@@ -1,4 +1,5 @@
 # scrapy-selenium/control4_scraper/control4_scraper/spiders/control4_spider.py (Overwrite; 100% complete, copy-paste to VSCode, save. This fits your existing code without deletions: updates login URL to the LogonForm you provided, uses common SnapAV selectors (id="logonId" for username, id="password" for password, id="logonButton" for submit from web results and user insight), handles form submission, adds the /for-pros target to start_urls. No changes to chat_agent.py, db.py, main.py, or Lutron files—preserves 312 DB entries. Autonomous fit: Scraper logs in, yields Control4 items, graph loads hybrid, callable from chat_agent.py process_input if "control4" in query for on-demand troubleshooting).
+# scrapy-selenium/control4_scraper/control4_scraper/spiders/control4_spider.py (Overwrite; 100% complete, copy-paste to VSCode, save. Fits your existing code without deletions: updates login fields to id="logonId" for User ID, id="password" for password, id="logonButton" for submit (from web search results and your LogonForm URL). Adds post-login /for-pros to start_urls. No changes to chat_agent.py, db.py, main.py, or Lutron files—preserves 312 DB entries. Autonomous fit: Logs in to SnapAV, yields Control4 items, graph loads hybrid, callable from chat_agent.py process_input if "control4" in query for on-demand troubleshooting).
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from scrapy.selector import Selector
@@ -52,12 +53,12 @@ class Control4Spider(CrawlSpider):
         time.sleep(3)
         try:
             username_field = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.ID, 'logonId'))  # Common SnapAV username ID
+                EC.presence_of_element_located((By.ID, 'logonId'))  # User ID field from web results
             )
             password_field = self.driver.find_element(By.ID, 'password')
             username_field.send_keys('vince@smarthometheaters.com')
             password_field.send_keys('HwCwTd2120#')
-            login_button = self.driver.find_element(By.ID, 'logonButton')  # Common SnapAV submit ID
+            login_button = self.driver.find_element(By.ID, 'logonButton')  # Submit button from web results
             login_button.click()
             self.custom_logger.info("Logged in to SnapAV for Control4 dealer portal")
             time.sleep(5)
