@@ -46,28 +46,37 @@ class Control4Spider(CrawlSpider):
         self.login_to_dealer_portal()
 
     def login_to_dealer_portal(self):
-        login_url = 'https://dealer.control4.com/Login'  # Current dealer login URL from web results
+        login_url = 'https://www.snapav.com/shop/LogonForm?catalogId=10010&storeId=10151&langId=-1&krypto=3zIlLvntlb6%2Bq0lCzl0L2ESswxB2nKphkki9QpzB8LQ5ySHUaHrL%2BvoGWSBKqhLXHJZDXw4c5cBShX%2FdcOIaYw%3D%3D'  # Your LogonForm URL
         self.driver.get(login_url)
-        time.sleep(5)  # Longer wait for page load
+        time.sleep(5)  # Longer wait for load
+        self.custom_logger.info(f"Page source after load: {self.driver.page_source[:500]}...")  # Log first 500 chars of HTML for debug
         try:
+            # Try primary selectors
             username_field = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.ID, 'username'))  # Username field from web results
+                EC.presence_of_element_located((By.ID, 'logonId'))
             )
             password_field = self.driver.find_element(By.ID, 'password')
-            username_field.send_keys('vince@smarthometheaters.com')
-            password_field.send_keys('HwCwTd2120#')
-            login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log In") or contains(text(), "Login") or @type="submit"]')  # Robust XPath for submit
-            login_button.click()
+            login_button = self.driver.find_element(By.ID, 'logonButton')
+        except:
+            try:
+                # Fallback selectors
+                username_field = self.driver.find_element(By.ID, 'username')
+                password_field = self.driver.find_element(By.ID, 'password')
+                login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log In") or @type="submit"]')
+            except Exception as e:
+                self.custom_logger.error(f"Fallback login error: {e}")
+                return
+
+        username_field.send_keys('vince@smarthometheaters.com')
+        password_field.send_keys('HwCwTd2120#')
+        login_button.click()
+        time.sleep(5)
+        self.custom_logger.info(f"Logged in, current URL: {self.driver.current_url}")
+        # Navigate to dealer resources if not redirected
+        if 'for-pros' not in self.driver.current_url:
+            self.driver.get('https://www.snapav.com/shop/en/snapav/for-pros')
             time.sleep(5)
-            self.custom_logger.info("Logged in to Control4 dealer portal")
-            self.custom_logger.info(f"Current URL after login: {self.driver.current_url}")
-            # Navigate to dealer resources if not redirected
-            if 'for-pros' not in self.driver.current_url and 'tech.control4.com' not in self.driver.current_url:
-                self.driver.get('https://www.snapav.com/shop/en/snapav/for-pros')
-                time.sleep(5)
-            self.custom_logger.info(f"Current URL after navigation: {self.driver.current_url}")
-        except Exception as e:
-            self.custom_logger.error(f"Login error: {e}")
+        self.custom_logger.info(f"Current URL after navigation: {self.driver.current_url}")
 
     def start_requests(self):
         for url in self.start_urls:
