@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
-from ..items import Control4ScraperItem
+from control4_scraper.items import Control4ScraperItem  # Changed to absolute import
 from dotenv import load_dotenv
 import os
 import logging
@@ -48,35 +48,20 @@ class Control4Spider(CrawlSpider):
     def login_to_dealer_portal(self):
         login_url = 'https://www.snapav.com/shop/LogonForm?catalogId=10010&storeId=10151&langId=-1&krypto=3zIlLvntlb6%2Bq0lCzl0L2ESswxB2nKphkki9QpzB8LQ5ySHUaHrL%2BvoGWSBKqhLXHJZDXw4c5cBShX%2FdcOIaYw%3D%3D'  # Your LogonForm URL
         self.driver.get(login_url)
-        time.sleep(5)  # Longer wait for load
-        self.custom_logger.info(f"Page source after load: {self.driver.page_source[:500]}...")  # Log first 500 chars of HTML for debug
+        time.sleep(3)
         try:
-            # Try primary selectors
-            username_field = WebDriverWait(self.driver, 20).until(
-                EC.presence_of_element_located((By.ID, 'logonId'))
+            username_field = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.ID, 'logonId'))  # User ID field from web results
             )
             password_field = self.driver.find_element(By.ID, 'password')
-            login_button = self.driver.find_element(By.ID, 'logonButton')
-        except:
-            try:
-                # Fallback selectors
-                username_field = self.driver.find_element(By.ID, 'username')
-                password_field = self.driver.find_element(By.ID, 'password')
-                login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log In") or @type="submit"]')
-            except Exception as e:
-                self.custom_logger.error(f"Fallback login error: {e}")
-                return
-
-        username_field.send_keys('vince@smarthometheaters.com')
-        password_field.send_keys('HwCwTd2120#')
-        login_button.click()
-        time.sleep(5)
-        self.custom_logger.info(f"Logged in, current URL: {self.driver.current_url}")
-        # Navigate to dealer resources if not redirected
-        if 'for-pros' not in self.driver.current_url:
-            self.driver.get('https://www.snapav.com/shop/en/snapav/for-pros')
+            username_field.send_keys('vince@smarthometheaters.com')
+            password_field.send_keys('HwCwTd2120#')
+            login_button = self.driver.find_element(By.ID, 'logonButton')  # Submit button from web results
+            login_button.click()
+            self.custom_logger.info("Logged in to SnapAV for Control4 dealer portal")
             time.sleep(5)
-        self.custom_logger.info(f"Current URL after navigation: {self.driver.current_url}")
+        except Exception as e:
+            self.custom_logger.error(f"Login error: {e}")
 
     def start_requests(self):
         for url in self.start_urls:
