@@ -1,4 +1,3 @@
-# scrapy-selenium/control4_scraper/control4_scraper/spiders/control4_spider.py (Overwrite; 100% complete, copy-paste to VSCode, save. Changed login_button to By.XPATH for 'Submit' from search, fits existing without deletions)
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from scrapy.selector import Selector
@@ -16,19 +15,18 @@ import time
 
 class Control4Spider(CrawlSpider):
     name = 'control4'
-    allowed_domains = ['control4.com', 'dealer.control4.com', 'knowledgebase.control4.com', 'support.control4.com']
+    allowed_domains = ['control4.com', 'dealer.control4.com', 'knowledgebase.control4.com', 'support.control4.com', 'snapav.com', 'snapone.com', 'tech.control4.com']
     start_urls = [
         'https://www.control4.com/help',
-        'https://dealer.control4.com/dealer/knowledgebase',
         'https://knowledgebase.control4.com/hc/en-us/categories/360000246514-Troubleshooting',
-        'https://dealer.control4.com/dealer/forums',
-        'https://www.control4.com/files/pdf/techdocs'  # PDF/tech docs
+        'https://www.control4.com/files/pdf/techdocs',
+        'https://tech.control4.com/s/'  # Dealer knowledgebase post-login (from your insight)
     ]
 
     rules = (
-        Rule(LinkExtractor(allow=('/help/', '/article/', '/products/', '/technical/', '/resources/', '/kb/', '/forums/', '/dealer/')), callback='parse_item', follow=True),
+        Rule(LinkExtractor(allow=('/help/', '/article/', '/products/', '/technical/', '/resources/', '/kb/', '/forums/', '/dealer/', '/s/')), callback='parse_item', follow=True),
         Rule(LinkExtractor(allow=('/page/[0-9]+', '/next', '/more')), follow=True),
-        Rule(LinkExtractor(allow=('.pdf')), callback='parse_pdf', follow=False),  # Rule for PDFs
+        Rule(LinkExtractor(allow=('.pdf')), callback='parse_pdf', follow=False),
     )
 
     def __init__(self, *args, **kwargs):
@@ -44,25 +42,33 @@ class Control4Spider(CrawlSpider):
         service = Service('/usr/local/bin/chromedriver')
         self.driver = webdriver.Chrome(service=service, options=options)
         self.custom_logger.info("ChromeDriver initialized")
-
-        # Dealer login for forums/kb (fits goal: access dealer info; uses same creds as Lutron)
         self.login_to_dealer_portal()
 
     def login_to_dealer_portal(self):
-        login_url = 'https://dealer.control4.com/dealer/login'  # Control4 dealer login
+        login_url = 'https://www.snapav.com/'  # SnapAV login (from your insight)
         self.driver.get(login_url)
         time.sleep(3)
         try:
+            # Click login link to reach form (SnapAV requires link click first)
+            login_link = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, '//a[contains(text(), "Log In") or contains(text(), "Login")]'))
+            )
+            login_link.click()
+            time.sleep(2)
             username_field = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.ID, 'username'))  # Form field
+                EC.presence_of_element_located((By.ID, 'username'))
             )
             password_field = self.driver.find_element(By.ID, 'password')
-            username_field.send_keys('vince@smarthometheaters.com')  # Same as Lutron
-            password_field.send_keys('HwCwTd2120#')  # Same as Lutron
-            login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Login")]')  # Changed to XPath for 'Login' text
+            username_field.send_keys('vince@smarthometheaters.com')
+            password_field.send_keys('HwCwTd2120#')
+            # Try XPath for 'Log In' text, fallback to CSS
+            try:
+                login_button = self.driver.find_element(By.XPATH, '//button[contains(text(), "Log In") or contains(text(), "Login")]')
+            except:
+                login_button = self.driver.find_element(By.CSS_SELECTOR, 'button.btn-login, button.btn-primary, button[type="submit"]')
             login_button.click()
-            self.custom_logger.info("Logged in to Control4 dealer portal")
-            time.sleep(5)  # Wait for dashboard
+            self.custom_logger.info("Logged in to SnapAV for Control4 dealer portal")
+            time.sleep(5)
         except Exception as e:
             self.custom_logger.error(f"Login error: {e}")
 
@@ -81,12 +87,12 @@ class Control4Spider(CrawlSpider):
             yield Request(
                 url=url,
                 callback=self.parse,
-                meta={'selenium_response': self.driver.page_source}
+                meta={'selenium_response': self.driver.page_source, 'selenium': True}
             )
 
     def parse(self, response):
         sel = Selector(response)
-        links = sel.css('a[href*="/help/"][href*="/article/"]::attr(href), a[href*="/instructions/"]::attr(href), a[href*="/product/"]::attr(href), a[href*="/forums/"]::attr(href)').getall()
+        links = sel.css('a[href*="/help/"][href*="/article/"]::attr(href), a[href*="/instructions/"]::attr(href), a[href*="/product/"]::attr(href), a[href*="/forums/"]::attr(href), a[href*="/s/"]::attr(href)').getall()
         for link in links:
             absolute_url = response.urljoin(link)
             if any(domain in absolute_url for domain in self.allowed_domains):
@@ -101,13 +107,12 @@ class Control4Spider(CrawlSpider):
                         self.custom_logger.info(f"Accepted cookie consent for {absolute_url}")
                     except Exception:
                         self.custom_logger.debug(f"No cookie consent popup for {absolute_url}")
-                    # Scroll to load dynamic content
                     self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                     time.sleep(1)
                     yield Request(
                         url=absolute_url,
                         callback=self.parse_item,
-                        meta={'selenium_response': self.driver.page_source}
+                        meta={'selenium_response': self.driver.page_source, 'selenium': True}
                     )
                 except Exception as e:
                     self.custom_logger.error(f"Error accessing {absolute_url}: {e}")
@@ -123,11 +128,10 @@ class Control4Spider(CrawlSpider):
         item['solution'] = ' '.join(sel.css('div.card-content p::text, div.panel-body p::text, div.top-category-list-content p::text, ul li::text, .faq-answer::text, .instructions::text, div.modal-body p::text, div.content p::text, div.article-content p::text').getall()).strip()
         item['product'] = sel.css('h3::text, .coh-heading::text, .card-title::text, .product-name::text, .product-detail::text').get(default='').strip()
         item['category'] = (
-            'Troubleshooting' if any(x in response.url.lower() for x in ['troubleshoot', 'support', 'technical', 'help', 'faq', 'instructions', 'forums'])
+            'Troubleshooting' if any(x in response.url.lower() for x in ['troubleshoot', 'support', 'technical', 'help', 'faq', 'instructions', 'forums', 'kb'])
             else 'General'
         )
         item['url'] = response.url
-
         if item['issue'] or item['solution'] or item['product']:
             self.custom_logger.info(f"Scraped item from {response.url}: issue='{item['issue'][:50]}...'")
             yield item
@@ -138,9 +142,9 @@ class Control4Spider(CrawlSpider):
         item = Control4ScraperItem()
         item['url'] = response.url
         item['category'] = 'PDF Document'
-        item['issue'] = response.url.split('/')[-1].replace('.pdf', '')  # Use filename as issue
+        item['issue'] = response.url.split('/')[-1].replace('.pdf', '')
         item['product'] = 'Control4 Technical Document'
-        item['solution'] = 'PDF link for parsing: ' + response.url  # Yield link; parse later with code_execution (e.g., pdfminer to extract text)
+        item['solution'] = 'PDF link for parsing: ' + response.url
         self.custom_logger.info(f"Yielded PDF link: {response.url}")
         yield item
 
